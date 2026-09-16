@@ -5,14 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HEWN Tech — Heritage, Knowledge, Technology</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="loc-stripe">
+  <div class="stripe-cyan"></div>
+  <div class="stripe-orange"></div>
+</div>
+<div class="archive-bar">
+  <div class="wrap archive-bar-inner">
+ 
+    <span class="repo-meta mono">DIGITAL PRESERVATION &amp; RESEARCH</span>
+    <span class="repo-loc mono">ADDIS ABABA, ETHIOPIA Â· EST. 2026</span>
+  </div>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="mark"></span>HEWN Tech</a>
+    <a href="index.html" class="brand" aria-label="HEWN Tech"><img src="hewn-tech-logo.jpg" alt="HEWN Tech - Preserving Ethiopia's Heritage" class="brand-logo-img"></a>
+    <button class="menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.site-nav').classList.toggle('nav-open')">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
     <nav class="links">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
@@ -58,22 +75,22 @@
 
     <div class="quick-links">
       <a href="about.html">
-        <span class="num mono">01</span>
+        <span class="num mono"></span>
         <h3>About</h3>
         <p>Helen Gigar Tesfaye, the HEWN Tech vision, and the story behind the archive.</p>
       </a>
       <a href="projects.html">
-        <span class="num mono">02</span>
+        <span class="num mono"></span>
         <h3>Projects</h3>
         <p>The Gigar Tesfaye Archive, virtual and photo exhibitions, and what's ahead.</p>
       </a>
       <a href="network.html">
-        <span class="num mono">03</span>
+        <span class="num mono"></span>
         <h3>Network</h3>
         <p>Institutions, professionals, and communities collaborating on heritage work.</p>
       </a>
       <a href="knowledge.html">
-        <span class="num mono">04</span>
+        <span class="num mono"></span>
         <h3>Knowledge Center</h3>
         <p>Archival collections, research, GIS documentation, and training resources.</p>
       </a>
@@ -91,7 +108,7 @@
     <div>
       <p>This journey began with my father, Gigar Tesfaye. Growing up, I remember the excitement I felt whenever he returned from his fieldwork — always reading, writing, researching, and documenting.</p>
       <p>My respect and love for his work inspired me to begin this journey — to preserve what he left behind, make his knowledge more accessible, and build on the values he devoted his life to.</p>
-      <p><a href="about.html" style="color:var(--indigo-deep); border-bottom:1px solid var(--gold); text-decoration:none;">Read the full story on the About page</a></p>
+      <p><a href="about.html" style="color:var(--indigo-deep); border-bottom:1px solid var(--gold); text-decoration:none;">Read the full story on the About page &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -100,6 +117,7 @@
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
     <p>Heritage · Knowledge · Technology · Sustainability — Addis Ababa, Ethiopia</p>
+    <div class="footer-colophon">ARCHIVAL PRESERVATION PROTOCOL · </div>
   </div>
 </footer>
 

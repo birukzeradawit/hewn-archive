@@ -5,14 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Knowledge Center — HEWN Tech</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="loc-stripe">
+  <div class="stripe-cyan"></div>
+  <div class="stripe-orange"></div>
+</div>
+<div class="archive-bar">
+  <div class="wrap archive-bar-inner">
+   
+    <span class="repo-meta mono">DIGITAL PRESERVATION &amp; RESEARCH</span>
+    <span class="repo-loc mono">ADDIS ABABA, ETHIOPIA Â· EST. 2026</span>
+  </div>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="mark"></span>HEWN Tech</a>
+    <a href="index.html" class="brand" aria-label="HEWN Tech"><img src="hewn-tech-logo.jpg" alt="HEWN Tech - Preserving Ethiopia's Heritage" class="brand-logo-img"></a>
+    <button class="menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.site-nav').classList.toggle('nav-open')">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
     <nav class="links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -36,22 +53,22 @@
   <div class="wrap">
     <div class="knowledge-grid">
       <div class="k-card">
-        <span class="tag mono">Archival Collections</span>
+        <span class="tag mono"> Archival Collections</span>
         <h3>Documents &amp; Photographs</h3>
         <p>Organized records, photographs, maps, and field notes drawn from the Gigar Tesfaye Archive and related heritage collections.</p>
       </div>
       <div class="k-card">
-        <span class="tag mono">Research</span>
+        <span class="tag mono"> Research</span>
         <h3>Publications &amp; Findings</h3>
         <p>Research on Ethiopian archaeology, architecture, and cultural heritage, connecting archival evidence to conservation practice.</p>
       </div>
       <div class="k-card">
-        <span class="tag mono">Digital Heritage</span>
+        <span class="tag mono"> Digital Heritage</span>
         <h3>GIS &amp; Spatial Documentation</h3>
         <p>Mapping, remote sensing, and digital tools that document heritage places and track change over time.</p>
       </div>
       <div class="k-card">
-        <span class="tag mono">Capacity Building</span>
+        <span class="tag mono"> Capacity Building</span>
         <h3>Training &amp; Workshops</h3>
         <p>Learning opportunities for heritage professionals, students, and communities in documentation, research, and conservation methods.</p>
       </div>
@@ -64,6 +81,7 @@
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
     <p>Heritage · Knowledge · Technology · Sustainability — Addis Ababa, Ethiopia</p>
+    <div class="footer-colophon">ARCHIVAL PRESERVATION PROTOCOL ·  </div>
   </div>
 </footer>
 

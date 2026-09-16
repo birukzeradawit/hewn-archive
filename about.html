@@ -5,14 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — HEWN Tech</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="loc-stripe">
+  <div class="stripe-cyan"></div>
+  <div class="stripe-orange"></div>
+</div>
+<div class="archive-bar">
+  <div class="wrap archive-bar-inner">
+
+    <span class="repo-meta mono">DIGITAL PRESERVATION &amp; RESEARCH</span>
+    <span class="repo-loc mono">ADDIS ABABA, ETHIOPIA Â· EST. 2026</span>
+  </div>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="mark"></span>HEWN Tech</a>
+    <a href="index.html" class="brand" aria-label="HEWN Tech"><img src="hewn-tech-logo.jpg" alt="HEWN Tech - Preserving Ethiopia's Heritage" class="brand-logo-img"></a>
+    <button class="menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.site-nav').classList.toggle('nav-open')">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
     <nav class="links">
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
@@ -54,12 +71,12 @@
     </div>
 
     <div class="principles-grid">
-      <div class="principle"><span class="num mono">01</span><h4>Preserve</h4><p>Protect valuable cultural and documentary resources for future generations.</p></div>
-      <div class="principle"><span class="num mono">02</span><h4>Document</h4><p>Create accurate, organized, and reliable records of heritage, collections, and evidence.</p></div>
-      <div class="principle"><span class="num mono">03</span><h4>Research</h4><p>Use evidence and interdisciplinary knowledge to deepen understanding of heritage.</p></div>
-      <div class="principle"><span class="num mono">04</span><h4>Conserve</h4><p>Support informed approaches to protecting and sustainably managing heritage.</p></div>
-      <div class="principle"><span class="num mono">05</span><h4>Connect</h4><p>Build relationships between people, institutions, disciplines, and communities.</p></div>
-      <div class="principle"><span class="num mono">06</span><h4>Innovate</h4><p>Use appropriate technology to strengthen documentation, research, and access.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Preserve</h4><p>Protect valuable cultural and documentary resources for future generations.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Document</h4><p>Create accurate, organized, and reliable records of heritage, collections, and evidence.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Research</h4><p>Use evidence and interdisciplinary knowledge to deepen understanding of heritage.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Conserve</h4><p>Support informed approaches to protecting and sustainably managing heritage.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Connect</h4><p>Build relationships between people, institutions, disciplines, and communities.</p></div>
+      <div class="principle"><span class="num mono"></span><h4>Innovate</h4><p>Use appropriate technology to strengthen documentation, research, and access.</p></div>
     </div>
   </div>
 </section>
@@ -91,6 +108,7 @@
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
     <p>Heritage · Knowledge · Technology · Sustainability — Addis Ababa, Ethiopia</p>
+    <div class="footer-colophon">ARCHIVAL PRESERVATION PROTOCOL · </div>
   </div>
 </footer>
 
