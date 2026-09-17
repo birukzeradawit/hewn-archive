@@ -949,7 +949,8 @@ section.block:last-of-type {
 }
 
 .collab-list {
-  list-style: none;
+  list-style-type:disc;
+  padding-left: 25px;
   margin: 20px 0 0 0;
   padding: 0;
   columns: 2;
@@ -966,11 +967,7 @@ section.block:last-of-type {
   gap: 8px;
 }
 
-.collab-list li::before {
-  content: "â–ª";
-  color: var(--gold);
-  font-size: 0.75rem;
-}
+
 
 .partners-list {
   list-style: none;
