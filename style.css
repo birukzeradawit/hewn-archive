@@ -962,7 +962,7 @@ section.block:last-of-type {
   border-bottom: 1px solid var(--line-soft);
   font-size: 0.94rem;
   break-inside: avoid;
-  display: flex;
+  display: list-item;
   align-items: center;
   gap: 8px;
 }
