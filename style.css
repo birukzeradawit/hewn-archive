@@ -1422,10 +1422,9 @@ footer .footer-colophon {
 
 /* Biography Layout */
 .bio-layout {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 48px;
-  align-items: start;
+  display: block;
+  max-width: 860px;
+  margin: 0 auto;
 }
 .bio-sidebar {
   position: sticky;
@@ -1548,11 +1547,12 @@ footer .footer-colophon {
   background: var(--parchment-light);
   border: 1px solid var(--line-strong);
   border-top: 3px solid var(--gold);
-  padding: 28px 24px;
+  padding: 24px 22px;
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 190px;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
@@ -1569,7 +1569,7 @@ footer .footer-colophon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .holding-code {
   font-size: 0.74rem;
@@ -1588,18 +1588,12 @@ footer .footer-colophon {
 }
 .holding-icon-symbol {
   font-size: 2rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .holding-card h3 {
-  font-size: 1.30rem;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  margin-bottom: 18px;
   color: var(--indigo-deep);
-}
-.holding-card p {
-  font-size: 0.90rem;
-  line-height: 1.55;
-  color: var(--ink-soft);
-  margin-bottom: 20px;
 }
 .holding-meta {
   display: flex;
@@ -1631,8 +1625,10 @@ footer .footer-colophon {
 
 @media (max-width: 960px) {
   .bio-layout {
-    grid-template-columns: 1fr;
-  }
+  display: block;
+  max-width: 860px;
+  margin: 0 auto;
+}
   .bio-sidebar {
     position: static;
   }
@@ -1914,5 +1910,89 @@ footer .footer-colophon {
   header.site-nav,
   footer {
     border: 1px solid #000;
+  }
+}
+/* Partners Directory & Logos */
+.partners-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+.partner-entry-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  transition: transform 0.2s ease, border-left-color 0.2s ease, box-shadow 0.2s ease;
+}
+.partner-entry-card:hover {
+  transform: translateX(3px);
+  border-left-color: var(--cinnabar);
+  box-shadow: var(--shadow-card);
+}
+.partner-logo-and-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.partner-emblem {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--indigo-deep);
+  padding: 6px;
+}
+.partner-emblem svg {
+  width: 100%;
+  height: 100%;
+}
+.partner-title-group h4 {
+  font-size: 1.02rem;
+  color: var(--indigo-deep);
+  margin: 0 0 2px 0;
+}
+.partner-title-group .partner-meta {
+  font-size: 0.72rem;
+  color: var(--cinnabar);
+  letter-spacing: 0.05em;
+}
+.partner-site-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: var(--indigo-deep);
+  color: var(--paper);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.partner-site-btn:hover {
+  background: var(--cinnabar);
+  transform: translateY(-1px);
+}
+@media (max-width: 680px) {
+  .partner-entry-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .partner-site-btn {
+    align-self: flex-start;
+    margin-top: 6px;
   }
 }
