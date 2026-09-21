@@ -1,0 +1,12 @@
+{
+  "name": "hewn-tech-website",
+  "version": "1.0.0",
+  "description": "HEWN Tech - Heritage, Knowledge, Technology website",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'Static site - no build step needed'"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
