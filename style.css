@@ -67,11 +67,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--parchment);
-  /* Tactile cotton rag / vellum paper grain effect */
+  /* Enhanced heritage archive background with Ethiopian manuscript patterns */
   background-image:
     radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 255, 255, 0.7) 0%, transparent 80%),
     radial-gradient(circle at 100% 100%, rgba(220, 206, 185, 0.2) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)' opacity='0.035'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)' opacity='0.035'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L20 10 L20 20 L10 20 Z' fill='none' stroke='%238F2A1E' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M30 30 L40 30 L40 40 L30 40 Z' fill='none' stroke='%23A47026' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M50 50 L60 50 L60 60 L50 60 Z' fill='none' stroke='%231C354D' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='90' cy='30' r='5' fill='none' stroke='%238F2A1E' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='30' cy='90' r='8' fill='none' stroke='%23A47026' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, auto, 120px 120px;
   color: var(--ink);
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-feature-settings: "liga" 1, "calt" 1;
@@ -254,7 +256,15 @@ header.site-nav {
   max-width: 280px;
   object-fit: contain;
   display: block;
-  border-radius: 4px;
+  border-radius: 0;
+  /* Subtle archival seal effect */
+  filter: drop-shadow(0 1px 2px rgba(28, 22, 16, 0.1));
+  /* Blend with parchment background */
+  mix-blend-mode: multiply;
+  /* Subtle border like a rubber stamp */
+  border: 1px solid rgba(143, 42, 30, 0.15);
+  padding: 2px;
+  background: rgba(248, 245, 236, 0.3);
 }
 
 /* Navigation Links */
@@ -337,11 +347,12 @@ nav.links a.active::after {
   border-bottom: 1px solid var(--line);
   position: relative;
   background-color: var(--parchment);
-  /* Subtle archival ledger coordinate grid */
+  /* Enhanced archival ledger coordinate grid with Ethiopian geometric patterns */
   background-image:
     linear-gradient(to right, var(--ledger-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--ledger-line) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to bottom, var(--ledger-line) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L20 0 L20 20 L0 20 Z' fill='none' stroke='%238F2A1E' stroke-width='0.3' opacity='0.05'/%3E%3Cpath d='M40 40 L60 40 L60 60 L40 60 Z' fill='none' stroke='%23A47026' stroke-width='0.3' opacity='0.05'/%3E%3Ccircle cx='20' cy='60' r='10' fill='none' stroke='%231C354D' stroke-width='0.3' opacity='0.04'/%3E%3Ccircle cx='60' cy='20' r='8' fill='none' stroke='%238F2A1E' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 40px 40px, 40px 40px, 80px 80px;
 }
 
 /* Top corner archival registration crosshairs */
@@ -564,13 +575,14 @@ section.block:last-of-type {
   border-bottom: none;
 }
 
-/* Ledger Ruled Background Band */
+/* Ledger Ruled Background Band with Ethiopian patterns */
 .band-paper {
   background-color: var(--paper);
   background-image:
     linear-gradient(var(--ledger-line) 1px, transparent 1px),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 100% 32px, auto;
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30 L10 30 Z' fill='none' stroke='%238F2A1E' stroke-width='0.4' opacity='0.06'/%3E%3Cpath d='M70 70 L90 70 L90 90 L70 90 Z' fill='none' stroke='%23A47026' stroke-width='0.4' opacity='0.06'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%231C354D' stroke-width='0.4' opacity='0.05'/%3E%3Cpath d='M25 75 L75 25' stroke='%238F2A1E' stroke-width='0.3' opacity='0.04'/%3E%3Cpath d='M25 25 L75 75' stroke='%23A47026' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 100% 32px, auto, 100px 100px;
   border-top: 1px solid var(--line);
   box-shadow: inset 0 2px 4px rgba(35, 25, 15, 0.03);
 }
@@ -628,6 +640,13 @@ section.block:last-of-type {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.25s ease,
               border-color 0.25s ease;
+  /* Heritage manuscript corner decorations */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2 L8 2 L2 8 Z' fill='none' stroke='%238F2A1E' stroke-width='0.4' opacity='0.08'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23 23 L17 23 L23 17 Z' fill='none' stroke='%23A47026' stroke-width='0.4' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 25px 25px, 25px 25px;
+  background-position: top left, bottom right;
+  background-repeat: no-repeat, no-repeat;
 }
 
 .quick-links a::after {
@@ -853,6 +872,10 @@ section.block:last-of-type {
   box-shadow: var(--shadow-card);
   position: relative;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  /* Heritage manuscript paper texture */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L10 0 L10 10 L0 10 Z' fill='none' stroke='%238F2A1E' stroke-width='0.3' opacity='0.04'/%3E%3Cpath d='M30 30 L40 30 L40 40 L30 40 Z' fill='none' stroke='%23A47026' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
 }
 
 .project-row:hover {
@@ -1016,6 +1039,10 @@ section.block:last-of-type {
   box-shadow: var(--shadow-card);
   position: relative;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  /* Ethiopian manuscript border pattern */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2' fill='none' stroke='%238F2A1E' stroke-width='0.4' opacity='0.06'/%3E%3Ccircle cx='25' cy='25' r='2' fill='none' stroke='%23A47026' stroke-width='0.4' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 30px 30px;
 }
 
 .k-card:hover {
@@ -1194,6 +1221,10 @@ footer {
   color: var(--paper);
   border-top: 3px solid var(--gold);
   position: relative;
+  /* Heritage pattern overlay */
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 5 L15 5 L15 15 L5 15 Z' fill='none' stroke='%23A47026' stroke-width='0.5' opacity='0.1'/%3E%3Cpath d='M45 45 L55 45 L55 55 L45 55 Z' fill='none' stroke='%238F2A1E' stroke-width='0.5' opacity='0.1'/%3E%3Ccircle cx='30' cy='30' r='8' fill='none' stroke='%237BC3D0' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
 }
 
 footer .footer-mark {
@@ -1291,6 +1322,68 @@ footer .footer-colophon {
   .collab-list {
     columns: 1;
   }
+}
+
+/* ==========================================================================
+   HERITAGE DECORATIVE ELEMENTS
+   ========================================================================== */
+.archive-decorative-border {
+  border: 2px solid var(--line);
+  position: relative;
+  padding: 4px;
+}
+
+.archive-decorative-border::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid var(--cinnabar);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.ethiopian-corner {
+  position: relative;
+}
+
+.ethiopian-corner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--cinnabar) 50%),
+    linear-gradient(-45deg, transparent 50%, var(--gold) 50%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.archival-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 8rem;
+  color: var(--ink-faint);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.heritage-ornament {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cinnabar), var(--gold), var(--cinnabar));
+  margin: 0 12px;
+  opacity: 0.6;
 }
 
 @media (prefers-reduced-motion: reduce) {
