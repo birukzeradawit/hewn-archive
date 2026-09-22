@@ -2572,7 +2572,7 @@ footer .footer-colophon {
 .historical-slideshow {
   position: relative;
   background: var(--bg-primary);
-  height: 500px;
+  height: 600px;
   overflow: hidden;
   border-bottom: 1px solid var(--border-light);
 }
@@ -2680,16 +2680,16 @@ footer .footer-colophon {
 
 @media (max-width: 768px) {
   .historical-slideshow {
-    height: 350px;
+    height: 400px;
   }
   .slide-caption {
     padding: 24px 20px 20px;
   }
   .slide-caption h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .slide-caption p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .slideshow-nav {
     bottom: 20px;
@@ -2699,5 +2699,12 @@ footer .footer-colophon {
     width: 36px;
     height: 36px;
     font-size: 1rem;
+  }
+  .dots {
+    gap: 6px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
   }
 }
