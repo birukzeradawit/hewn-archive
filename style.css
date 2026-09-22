@@ -182,9 +182,11 @@ section {
 }
 
 .archive-bar .repo-code::before {
-  content: "â—";
+  content: "●";
   font-size: 0.65rem;
   color: #55b376;
+  display: inline-block;
+  animation: sys-pulse 2.4s ease-in-out infinite;
 }
 
 .archive-bar .repo-meta {
@@ -2414,5 +2416,143 @@ footer .footer-colophon {
   .partner-site-btn {
     align-self: flex-start;
     margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   DIGITAL ARCHIVE SYSTEM LAYER
+   Live-system indicators, digitization badges, catalog chips, scan marks
+   ========================================================================== */
+
+@keyframes sys-pulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 0 rgba(85, 179, 118, 0); }
+  50% { opacity: 0.5; text-shadow: 0 0 6px rgba(85, 179, 118, 0.85); }
+}
+
+/* Subtle digital scan-line texture layered over the home archive banner */
+.archive-banner {
+  position: relative;
+}
+.archive-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(18, 33, 48, 0.035) 0px,
+    rgba(18, 33, 48, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Same scan-line motif, faint, on every inner page header */
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(18, 33, 48, 0.028) 0px,
+    rgba(18, 33, 48, 0.028) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+.page-header .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scanner-style corner registration marks on archival record cards */
+.holding-card,
+.partner-entry-card,
+.ebook-item {
+  position: relative;
+}
+.holding-card::before,
+.holding-card::after,
+.partner-entry-card::before,
+.partner-entry-card::after,
+.ebook-item::before,
+.ebook-item::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 0 solid var(--gold);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.holding-card::before,
+.partner-entry-card::before,
+.ebook-item::before {
+  top: 6px; left: 6px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.holding-card::after,
+.partner-entry-card::after,
+.ebook-item::after {
+  bottom: 6px; right: 6px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+.holding-card:hover::before, .holding-card:hover::after,
+.partner-entry-card:hover::before, .partner-entry-card:hover::after,
+.ebook-item:hover::before, .ebook-item:hover::after {
+  opacity: 1;
+  border-color: var(--cinnabar);
+}
+
+/* Digitization / preservation status badge (reuses the archive green) */
+.digi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #277947;
+  background: rgba(85, 179, 118, 0.10);
+  border: 1px solid rgba(85, 179, 118, 0.35);
+  padding: 3px 9px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.digi-badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #55b376;
+  flex-shrink: 0;
+}
+
+/* Generic monospace catalog / accession chip for inline use */
+.catalog-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.70rem;
+  color: var(--indigo-deep);
+  background: var(--indigo-tint);
+  border: 1px solid rgba(28, 53, 77, 0.22);
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .archive-banner::after,
+  .page-header::before {
+    background-size: 100% 4px;
   }
 }
