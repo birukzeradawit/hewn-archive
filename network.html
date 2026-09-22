@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -18,7 +18,9 @@
 
 <div class="archive-bar">
   <div class="wrap archive-bar-inner">
-   
+    <span class="repo-code mono">SYSTEM ONLINE</span>
+    <span class="repo-meta mono">HEWN Digital Archive &amp; Repository &middot; v1.0</span>
+    <span class="repo-loc mono">Addis Ababa, ET &middot; UTC+3</span>
   </div>
 </div>
 
@@ -39,6 +41,50 @@
     </nav>
   </div>
 </header>
+
+<!-- Historical Image Slideshow -->
+<section class="historical-slideshow">
+  <div class="slideshow-container">
+    <div class="slide active">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Ethiopian_manuscript.jpg" alt="Ancient Ethiopian Ge'ez manuscript">
+      <div class="slide-caption">
+        <h3>Ancient Ge'ez Manuscript</h3>
+        <p>13th century Ethiopian biblical manuscript written in classical Ge'ez script</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Aksum_Obelisks.jpg" alt="Aksumite stelae archaeological site">
+      <div class="slide-caption">
+        <h3>Aksumite Stelae</h3>
+        <p>4th century monumental obelisks from the ancient Kingdom of Aksum, UNESCO World Heritage Site</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Lalibela_Church_of_St_George.jpg" alt="Rock-hewn churches of Lalibela">
+      <div class="slide-caption">
+        <h3>Rock-Hewn Churches of Lalibela</h3>
+        <p>12th-13th century monolithic churches carved from solid rock, UNESCO World Heritage Site</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Ethiopian_prayer_book.jpg" alt="Ethiopian prayer book">
+      <div class="slide-caption">
+        <h3>Ethiopian Prayer Book</h3>
+        <p>15th century illuminated manuscript with traditional Ethiopian religious art</p>
+      </div>
+    </div>
+  </div>
+  <div class="slideshow-nav">
+    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+    <div class="dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+    </div>
+    <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+</section>
 
 <div class="page-header">
   <div class="wrap">
@@ -194,6 +240,39 @@
     <div class="footer-colophon">ARCHIVAL PRESERVATION PROTOCOL</div>
   </div>
 </footer>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = slides.length;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    dots[i].classList.remove('active');
+  });
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+}
+
+function changeSlide(direction) {
+  currentSlide += direction;
+  if (currentSlide >= totalSlides) currentSlide = 0;
+  if (currentSlide < 0) currentSlide = totalSlides - 1;
+  showSlide(currentSlide);
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+}
+
+// Auto-advance slideshow
+setInterval(() => {
+  changeSlide(1);
+}, 5000);
+</script>
 
 </body>
 </html>

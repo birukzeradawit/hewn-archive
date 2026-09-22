@@ -5,47 +5,69 @@
    ========================================================================== */
 
 :root {
-  /* Archival Materials & Paper Stocks */
-  --parchment: #F8F5EC;
-  --parchment-light: #FDFCFA;
-  --paper: #EFE7D8;
-  --paper-card: #FAF6EE;
-  --paper-dark: #E2D7C2;
-  --paper-folder: #DBCFBA;
-
-  /* Archival Inks */
-  --ink-carbon: #181512;
-  --ink: #27231E;
-  --ink-soft: #423B33;
-  --ink-muted: #6E6356;
-  --ink-faint: #9E9385;
-
-  /* Ethiopian Heritage & Manuscript Rubrication Pigments */
-  --cinnabar: #8F2A1E;        /* Traditional manuscript rubrication & accession stamp red */
-  --cinnabar-tint: rgba(143, 42, 30, 0.08);
-  --cinnabar-border: rgba(143, 42, 30, 0.28);
+  /* Digital Archive Neutral Color Scheme */
+  --bg-primary: #faf8f5;          /* Archive paper color */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0efe9;
   
-  --gold: #A47026;            /* Illuminated manuscript gold & aged wax seal */
-  --gold-tint: rgba(164, 112, 38, 0.10);
-  --gold-light: #D4A359;
-
-  --indigo-slate: #1C354D;     /* Curatorial slate blue */
-  --indigo-deep: #122130;      /* Deep bookbinding cloth & carbon navy */
-  --indigo-tint: rgba(28, 53, 77, 0.07);
-
-  --rust: #8F2A1E;            /* Backwards compatibility */
-  --indigo: #1C354D;
-
-  /* Archival Lines, Ledgers & Grids */
-  --line: rgba(45, 38, 30, 0.20);
-  --line-soft: rgba(45, 38, 30, 0.08);
-  --line-strong: rgba(45, 38, 30, 0.40);
-  --ledger-line: rgba(45, 38, 30, 0.045);
-
-  /* Shadows for physical paper cards */
-  --shadow-card: 0 1px 2px rgba(28, 22, 16, 0.05), 0 3px 8px rgba(28, 22, 16, 0.03);
-  --shadow-hover: 0 6px 20px rgba(28, 22, 16, 0.08), 0 2px 6px rgba(28, 22, 16, 0.04);
-  --shadow-dossier: 0 12px 32px rgba(20, 16, 12, 0.09), 0 2px 4px rgba(20, 16, 12, 0.04);
+  /* Text Colors */
+  --text-primary: #2c2c2e;        /* Archive dark */
+  --text-secondary: #6e6e73;
+  --text-tertiary: #8e8e93;
+  
+  /* Accent Colors - Historical Archive Theme */
+  --accent-primary: #8b4513;      /* Historical brown/bronze */
+  --accent-secondary: #654321;    /* Archive brown */
+  --accent-success: #5d8a66;     /* Archive green */
+  --accent-warning: #c17d59;     /* Historical orange */
+  
+  /* Border and Line Colors */
+  --border-light: #d4c4a8;
+  --border-medium: #a89070;
+  --border-dark: #7a6350;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+  
+  /* Legacy variable names for compatibility */
+  --parchment: var(--bg-primary);
+  --parchment-light: var(--bg-secondary);
+  --paper: var(--bg-tertiary);
+  --paper-card: var(--bg-secondary);
+  --paper-dark: #d1d1d6;
+  --paper-folder: #c7c7cc;
+  
+  --ink-carbon: var(--text-primary);
+  --ink: var(--text-primary);
+  --ink-soft: var(--text-secondary);
+  --ink-muted: var(--text-tertiary);
+  --ink-faint: #aeaeb2;
+  
+  --cinnabar: var(--accent-primary);
+  --cinnabar-tint: rgba(139, 69, 19, 0.08);
+  --cinnabar-border: rgba(139, 69, 19, 0.2);
+  
+  --gold: var(--accent-secondary);
+  --gold-tint: rgba(94, 92, 230, 0.08);
+  --gold-light: #8a84e3;
+  
+  --indigo-slate: #4a4a4c;
+  --indigo-deep: #3a3a3c;
+  --indigo-tint: rgba(74, 74, 76, 0.05);
+  
+  --rust: var(--accent-warning);
+  --indigo: var(--accent-secondary);
+  
+  --line: rgba(0, 0, 0, 0.1);
+  --line-soft: rgba(0, 0, 0, 0.05);
+  --line-strong: rgba(0, 0, 0, 0.2);
+  --ledger-line: rgba(0, 0, 0, 0.03);
+  
+  --shadow-card: var(--shadow-sm);
+  --shadow-hover: var(--shadow-md);
+  --shadow-dossier: var(--shadow-lg);
 
   --max: 1160px;
 }
@@ -66,20 +88,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--parchment);
-  /* Ethiopian heritage and manuscript themed background - MORE VISIBLE */
-  background-image:
-    /* Aged parchment texture */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='parchment'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23parchment)' opacity='0.10'/%3E%3C/svg%3E"),
-    /* Ethiopian Ge'ez script manuscript pattern - ENHANCED VISIBILITY */
-    url("data:image/svg+xml,%3Csvg width='250' height='250' viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Manuscript page frame --%3E%3Crect x='20' y='20' width='210' height='210' fill='%23F8F5EC' stroke='%238F2A1E' stroke-width='2' opacity='0.18'/%3E%3Crect x='25' y='25' width='200' height='200' fill='none' stroke='%23A47026' stroke-width='1' opacity='0.14'/%3E%3C!-- Ge'ez-style script lines (stylized) --%3E%3Cpath d='M35 45 Q45 40 55 45 Q65 50 75 45' fill='none' stroke='%238F2A1E' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 60 Q50 55 65 60 Q80 65 95 60' fill='none' stroke='%238F2A1E' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 75 Q45 70 55 75 Q65 80 75 75' fill='none' stroke='%238F2A1E' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 90 Q55 85 75 90 Q95 95 115 90' fill='none' stroke='%238F2A1E' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 105 Q45 100 55 105 Q65 110 75 105' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 120 Q50 115 65 120 Q80 125 95 120' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 135 Q55 130 75 135 Q95 140 115 135' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 150 Q45 145 55 150 Q65 155 75 150' fill='none' stroke='%231C354D' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 165 Q50 160 65 165 Q80 170 95 165' fill='none' stroke='%231C354D' stroke-width='1.5' opacity='0.25'/%3E%3Cpath d='M35 180 Q40 175 45 180 Q50 185 55 180' fill='none' stroke='%231C354D' stroke-width='1.5' opacity='0.25'/%3E%3C!-- Ethiopian cross decoration --%3E%3Cpath d='M130 50 L130 100 M115 75 L145 75' stroke='%238F2A1E' stroke-width='2' opacity='0.20'/%3E%3Ccircle cx='130' cy='75' r='10' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.18'/%3E%3Cpath d='M130 35 L130 45 M125 40 L135 40' stroke='%238F2A1E' stroke-width='1.5' opacity='0.16'/%3E%3Cpath d='M130 105 L130 115 M125 110 L135 110' stroke='%238F2A1E' stroke-width='1.5' opacity='0.16'/%3E%3C!-- Interlacing pattern (Ethiopian motif) --%3E%3Cpath d='M160 130 Q175 115 190 130 Q205 145 190 160 Q175 175 160 160 Q145 145 160 130' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.18'/%3E%3Cpath d='M160 145 Q175 130 190 145' fill='none' stroke='%238F2A1E' stroke-width='1.2' opacity='0.15'/%3E%3Cpath d='M160 145 Q175 160 190 145' fill='none' stroke='%238F2A1E' stroke-width='1.2' opacity='0.15'/%3E%3C!-- Archival folder tabs --%3E%3Crect x='150' y='180' width='70' height='40' fill='%23EFE7D8' stroke='%236E6356' stroke-width='1.2' opacity='0.16'/%3E%3Crect x='155' y='175' width='20' height='8' fill='%238F2A1E' opacity='0.20'/%3E%3C/svg%3E"),
-    /* Ethiopian heritage symbols and patterns - ENHANCED VISIBILITY */
-    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Processional cross pattern --%3E%3Cpath d='M100 20 L100 180 M60 100 L140 100' stroke='%238F2A1E' stroke-width='2' opacity='0.15'/%3E%3Ccircle cx='100' cy='100' r='30' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.14'/%3E%3Ccircle cx='100' cy='100' r='20' fill='none' stroke='%231C354D' stroke-width='1.2' opacity='0.12'/%3E%3C!-- Diamond patterns (common in Ethiopian art) --%3E%3Cpath d='M30 30 L40 20 L50 30 L40 40 Z' fill='none' stroke='%23A47026' stroke-width='1.2' opacity='0.14'/%3E%3Cpath d='M30 170 L40 160 L50 170 L40 180 Z' fill='none' stroke='%238F2A1E' stroke-width='1.2' opacity='0.14'/%3E%3Cpath d='M170 30 L180 20 L190 30 L180 40 Z' fill='none' stroke='%231C354D' stroke-width='1.2' opacity='0.14'/%3E%3Cpath d='M170 170 L180 160 L190 170 L180 180 Z' fill='none' stroke='%23A47026' stroke-width='1.2' opacity='0.14'/%3E%3C!-- Traditional border pattern --%3E%3Cpath d='M20 80 Q20 60 40 60' fill='none' stroke='%238F2A1E' stroke-width='1' opacity='0.12'/%3E%3Cpath d='M20 120 Q20 140 40 140' fill='none' stroke='%238F2A1E' stroke-width='1' opacity='0.12'/%3E%3Cpath d='M180 80 Q180 60 160 60' fill='none' stroke='%23A47026' stroke-width='1' opacity='0.12'/%3E%3Cpath d='M180 120 Q180 140 160 140' fill='none' stroke='%23A47026' stroke-width='1' opacity='0.12'/%3E%3C!-- Small manuscript decorative dots --%3E%3Ccircle cx='70' cy='70' r='4' fill='%238F2A1E' opacity='0.14'/%3E%3Ccircle cx='130' cy='70' r='4' fill='%23A47026' opacity='0.14'/%3E%3Ccircle cx='70' cy='130' r='4' fill='%231C354D' opacity='0.14'/%3E%3Ccircle cx='130' cy='130' r='4' fill='%238F2A1E' opacity='0.14'/%3E%3C/svg%3E"),
-    /* Archive documentation elements - ENHANCED VISIBILITY */
-    url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Document folder --%3E%3Crect x='30' y='40' width='120' height='100' fill='%23EFE7D8' stroke='%236E6356' stroke-width='1.5' opacity='0.16'/%3E%3Crect x='35' y='35' width='25' height='10' fill='%238F2A1E' opacity='0.20'/%3E%3C!-- Document lines --%3E%3Cline x1='40' y1='60' x2='140' y2='60' stroke='%236E6356' stroke-width='0.8' opacity='0.14'/%3E%3Cline x1='40' y1='75' x2='140' y2='75' stroke='%236E6356' stroke-width='0.8' opacity='0.14'/%3E%3Cline x1='40' y1='90' x2='140' y2='90' stroke='%236E6356' stroke-width='0.8' opacity='0.14'/%3E%3Cline x1='40' y1='105' x2='140' y2='105' stroke='%236E6356' stroke-width='0.8' opacity='0.14'/%3E%3Cline x1='40' y1='120' x2='100' y2='120' stroke='%236E6356' stroke-width='0.8' opacity='0.14'/%3E%3C!-- Archive stamp --%3E%3Ccircle cx='150' cy='40' r='18' fill='none' stroke='%238F2A1E' stroke-width='2' opacity='0.16'/%3E%3Ccircle cx='150' cy='40' r='12' fill='none' stroke='%23A47026' stroke-width='1.5' opacity='0.14'/%3E%3C/svg%3E");
-  background-size: 400px 400px, 250px 250px, 200px 200px, 180px 180px;
-  background-attachment: fixed, fixed, fixed, fixed;
-  color: var(--ink);
+  background-color: var(--bg-primary);
+  background-image: none;
+  color: var(--text-primary);
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-feature-settings: "liga" 1, "calt" 1;
   line-height: 1.68;
@@ -182,9 +193,11 @@ section {
 }
 
 .archive-bar .repo-code::before {
-  content: "â—";
+  content: "●";
   font-size: 0.65rem;
   color: #55b376;
+  display: inline-block;
+  animation: sys-pulse 2.4s ease-in-out infinite;
 }
 
 .archive-bar .repo-meta {
@@ -1469,10 +1482,7 @@ footer {
   color: var(--paper);
   border-top: 3px solid var(--gold);
   position: relative;
-  /* Enhanced heritage pattern with books and manuscripts */
-  background-image:
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Book spines --%3E%3Crect x='5' y='10' width='4' height='15' fill='none' stroke='%23A47026' stroke-width='0.4' opacity='0.08'/%3E%3Crect x='5' y='28' width='4' height='12' fill='none' stroke='%238F2A1E' stroke-width='0.4' opacity='0.08'/%3E%3Crect x='5' y='43' width='4' height='18' fill='none' stroke='%23A47026' stroke-width='0.4' opacity='0.08'/%3E%3C!-- Open book --%3E%3Cpath d='M30 30 Q40 25 50 30 L50 40 Q40 35 30 40 Z' fill='none' stroke='%238F2A1E' stroke-width='0.3' opacity='0.06'/%3E%3Cpath d='M50 30 Q60 25 70 30 L70 40 Q60 35 50 40 Z' fill='none' stroke='%23A47026' stroke-width='0.3' opacity='0.06'/%3E%3C!-- Geometric patterns --%3E%3Ccircle cx='60' cy='60' r='8' fill='none' stroke='%23A47026' stroke-width='0.35' opacity='0.07'/%3E%3Ccircle cx='60' cy='60' r='5' fill='none' stroke='%238F2A1E' stroke-width='0.25' opacity='0.05'/%3E%3Cpath d='M20 60 L30 60 L25 50 Z' fill='none' stroke='%23A47026' stroke-width='0.35' opacity='0.07'/%3E%3C/svg%3E");
-  background-size: 80px 80px;
+  background-image: none;
 }
 
 footer .footer-mark {
@@ -2414,5 +2424,280 @@ footer .footer-colophon {
   .partner-site-btn {
     align-self: flex-start;
     margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   DIGITAL ARCHIVE SYSTEM LAYER
+   Live-system indicators, digitization badges, catalog chips, scan marks
+   ========================================================================== */
+
+@keyframes sys-pulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 0 rgba(85, 179, 118, 0); }
+  50% { opacity: 0.5; text-shadow: 0 0 6px rgba(85, 179, 118, 0.85); }
+}
+
+/* Subtle digital scan-line texture layered over the home archive banner */
+.archive-banner {
+  position: relative;
+}
+.archive-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(18, 33, 48, 0.035) 0px,
+    rgba(18, 33, 48, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Same scan-line motif, faint, on every inner page header */
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(18, 33, 48, 0.028) 0px,
+    rgba(18, 33, 48, 0.028) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+.page-header .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scanner-style corner registration marks on archival record cards */
+.holding-card,
+.partner-entry-card,
+.ebook-item {
+  position: relative;
+}
+.holding-card::before,
+.holding-card::after,
+.partner-entry-card::before,
+.partner-entry-card::after,
+.ebook-item::before,
+.ebook-item::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 0 solid var(--gold);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.holding-card::before,
+.partner-entry-card::before,
+.ebook-item::before {
+  top: 6px; left: 6px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.holding-card::after,
+.partner-entry-card::after,
+.ebook-item::after {
+  bottom: 6px; right: 6px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+.holding-card:hover::before, .holding-card:hover::after,
+.partner-entry-card:hover::before, .partner-entry-card:hover::after,
+.ebook-item:hover::before, .ebook-item:hover::after {
+  opacity: 1;
+  border-color: var(--cinnabar);
+}
+
+/* Digitization / preservation status badge (reuses the archive green) */
+.digi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #277947;
+  background: rgba(85, 179, 118, 0.10);
+  border: 1px solid rgba(85, 179, 118, 0.35);
+  padding: 3px 9px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.digi-badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #55b376;
+  flex-shrink: 0;
+}
+
+/* Generic monospace catalog / accession chip for inline use */
+.catalog-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.70rem;
+  color: var(--indigo-deep);
+  background: var(--indigo-tint);
+  border: 1px solid rgba(28, 53, 77, 0.22);
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .archive-banner::after,
+  .page-header::before {
+    background-size: 100% 4px;
+  }
+}
+
+/* ==========================================================================
+   HISTORICAL IMAGE SLIDESHOW
+   Real images of Ethiopian manuscripts, stelae, and archaeological sites
+   ========================================================================== */
+.historical-slideshow {
+  position: relative;
+  background: var(--bg-primary);
+  height: 500px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 40px 32px 32px;
+  color: white;
+}
+
+.slide-caption h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+  color: white;
+}
+
+.slide-caption p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+  max-width: 800px;
+}
+
+.slideshow-nav {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  width: 12px;
+  height: 12px;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .historical-slideshow {
+    height: 350px;
+  }
+  .slide-caption {
+    padding: 24px 20px 20px;
+  }
+  .slide-caption h3 {
+    font-size: 1.4rem;
+  }
+  .slide-caption p {
+    font-size: 0.9rem;
+  }
+  .slideshow-nav {
+    bottom: 20px;
+    right: 20px;
+  }
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }
