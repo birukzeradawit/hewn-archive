@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login &mdash; HEWN Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
+<link rel="stylesheet" href="style.css?v=9">
+<style>
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-button:hover {
+  background: var(--accent-secondary);
+}
+
+.auth-links {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.auth-links a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.success-message {
+  background: #efe;
+  color: #3c3;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="loc-stripe">
+  <div class="stripe-cyan"></div>
+  <div class="stripe-orange"></div>
+</div>
+
+<div class="archive-bar">
+  <div class="wrap archive-bar-inner">
+    <span class="repo-loc mono">Addis Ababa, ET &middot; UTC+3</span>
+  </div>
+</div>
+
+<div class="auth-container">
+  <div class="auth-header">
+    <h1>Welcome Back</h1>
+    <p>Sign in to your HEWN Tech account</p>
+  </div>
+
+  <div class="error-message" id="errorMessage"></div>
+  <div class="success-message" id="successMessage"></div>
+
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit" class="auth-button">Sign In</button>
+  </form>
+
+  <div class="auth-links">
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const errorMessage = document.getElementById('errorMessage');
+  const successMessage = document.getElementById('successMessage');
+  
+  errorMessage.style.display = 'none';
+  successMessage.style.display = 'none';
+  
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      successMessage.textContent = 'Login successful! Redirecting...';
+      successMessage.style.display = 'block';
+      
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+    } else {
+      errorMessage.textContent = data.message || 'Login failed';
+      errorMessage.style.display = 'block';
+    }
+  } catch (error) {
+    errorMessage.textContent = 'Network error. Please try again.';
+    errorMessage.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>

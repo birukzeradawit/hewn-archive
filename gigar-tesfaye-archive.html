@@ -38,6 +38,8 @@
       <a href="network.html">Network</a>
       <a href="knowledge.html">Knowledge Center</a>
       <a href="contact.html">Contact</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <a href="signup.html" id="signupLink">Sign Up</a>
     </nav>
   </div>
 </header>
@@ -301,6 +303,42 @@ function goToSlide(index) {
 setInterval(() => {
   changeSlide(1);
 }, 6000);
+
+// Authentication state management
+function updateAuthUI() {
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const loginLink = document.getElementById('loginLink');
+  const signupLink = document.getElementById('signupLink');
+  
+  if (token && user) {
+    if (loginLink) {
+      loginLink.textContent = 'Logout';
+      loginLink.href = '#';
+      loginLink.onclick = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.reload();
+      };
+    }
+    if (signupLink) {
+      signupLink.style.display = 'none';
+    }
+  } else {
+    if (loginLink) {
+      loginLink.textContent = 'Login';
+      loginLink.href = 'login.html';
+      loginLink.onclick = null;
+    }
+    if (signupLink) {
+      signupLink.style.display = 'inline';
+    }
+  }
+}
+
+// Update auth UI on page load
+document.addEventListener('DOMContentLoaded', updateAuthUI);
 </script>
 
 </body>
