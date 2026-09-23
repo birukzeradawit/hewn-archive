@@ -3,10 +3,33 @@
   "version": "1.0.0",
   "description": "HEWN Tech - Heritage, Knowledge, Technology website",
   "scripts": {
-    "dev": "serve .",
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
     "build": "echo 'Static site - no build step needed'"
   },
   "devDependencies": {
     "serve": "^14.2.0"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birukzeradawit/hewn-archive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/birukzeradawit/hewn-archive/issues"
+  },
+  "homepage": "https://github.com/birukzeradawit/hewn-archive#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "pg": "^8.23.0"
   }
 }
