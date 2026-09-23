@@ -173,6 +173,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   successMessage.style.display = 'none';
   
   try {
+    // Try backend API first
     const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
@@ -197,8 +198,36 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       errorMessage.style.display = 'block';
     }
   } catch (error) {
-    errorMessage.textContent = 'Network error. Please try again.';
-    errorMessage.style.display = 'block';
+    // Fallback to localStorage authentication
+    try {
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(u => u.email === email && u.password === btoa(password));
+      
+      if (user) {
+        const token = btoa(JSON.stringify({ id: user.id, username: user.username, role: user.role }));
+        
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify({
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role
+        }));
+        
+        successMessage.textContent = 'Login successful! Redirecting...';
+        successMessage.style.display = 'block';
+        
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } else {
+        errorMessage.textContent = 'Invalid email or password';
+        errorMessage.style.display = 'block';
+      }
+    } catch (localStorageError) {
+      errorMessage.textContent = 'Login failed. Please try again.';
+      errorMessage.style.display = 'block';
+    }
   }
 });
 </script>
