@@ -258,56 +258,29 @@ header.site-nav {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 0;
   user-select: none;
   transition: all 0.3s ease;
   position: relative;
-  /* Heritage archive frame effect */
-  background: linear-gradient(135deg, rgba(248, 245, 236, 0.95) 0%, rgba(239, 231, 216, 0.9) 100%);
-  border: 2px solid var(--line-strong);
-  border-radius: 4px;
-  box-shadow: 
-    0 2px 8px rgba(28, 22, 16, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 0 1px rgba(164, 112, 38, 0.1);
+  /* Blend with background */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .brand::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid var(--gold);
-  opacity: 0.3;
-  border-radius: 6px;
-  pointer-events: none;
+  display: none;
 }
 
 .brand::after {
-  content: "EST. 2024";
-  position: absolute;
-  bottom: -6px;
-  right: 8px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.55rem;
-  color: var(--cinnabar);
-  letter-spacing: 0.15em;
-  opacity: 0.7;
-  background: var(--parchment);
-  padding: 2px 6px;
-  border: 1px solid var(--line-soft);
-  border-radius: 2px;
+  display: none;
 }
 
 .brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 4px 12px rgba(28, 22, 16, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 0 0 1px rgba(164, 112, 38, 0.2);
-  border-color: var(--gold);
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .brand-logo-img {
@@ -316,11 +289,11 @@ header.site-nav {
   max-width: 280px;
   object-fit: contain;
   display: block;
-  border-radius: 2px;
-  /* Enhanced archival seal effect */
-  filter: drop-shadow(0 2px 4px rgba(28, 22, 16, 0.15));
-  /* Remove blend mode for better integration */
-  mix-blend-mode: normal;
+  border-radius: 0;
+  /* Blend with background */
+  background-color: transparent;
+  filter: none;
+  mix-blend-mode: multiply;
   /* Heritage border effect */
   border: none;
   padding: 0;
