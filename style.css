@@ -351,6 +351,48 @@ nav.links a.active::after {
   background: var(--gold);
 }
 
+/* Authentication Buttons */
+nav.links a#loginLink,
+nav.links a#signupLink {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 8px 16px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--accent-primary);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+nav.links a#loginLink:hover,
+nav.links a#signupLink:hover {
+  background: var(--accent-warning);
+  border-color: var(--accent-warning);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(193, 125, 89, 0.3);
+}
+
+nav.links a#loginLink::after,
+nav.links a#signupLink::after {
+  display: none;
+}
+
+/* Logout button styling */
+nav.links a#loginLink[data-logout="true"] {
+  border-color: var(--accent-warning);
+  color: var(--accent-warning);
+}
+
+nav.links a#loginLink[data-logout="true"]:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
 /* Mobile Navigation Toggle */
 .menu-toggle {
   display: none;
