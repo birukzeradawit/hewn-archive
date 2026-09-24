@@ -78,17 +78,17 @@ router.post('/', authMiddleware, async (req, res) => {
       category_id,
       content_type,
       image_url,
-      document_url,
+      file_url,
       author,
       featured,
       published
     } = req.body;
 
     const result = await pool.query(
-      `INSERT INTO content (title, description, category_id, content_type, image_url, document_url, author, featured, published, created_by)
+      `INSERT INTO content (title, description, category_id, content_type, image_url, file_url, author, featured, published, created_by)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [title, description, category_id, content_type, image_url, document_url, author, featured, published, req.user.id]
+      [title, description, category_id, content_type, image_url, file_url, author, featured, published, req.user.id]
     );
 
     res.status(201).json(result.rows[0]);
@@ -107,7 +107,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
       category_id,
       content_type,
       image_url,
-      document_url,
+      file_url,
       author,
       featured,
       published
@@ -129,11 +129,11 @@ router.put('/:id', authMiddleware, async (req, res) => {
 
     const result = await pool.query(
       `UPDATE content
-       SET title = $1, description = $2, category_id = $3, content_type = $4, image_url = $5, document_url = $6,
+       SET title = $1, description = $2, category_id = $3, content_type = $4, image_url = $5, file_url = $6,
            author = $7, featured = $8, published = $9, updated_at = CURRENT_TIMESTAMP
        WHERE id = $10
        RETURNING *`,
-      [title, description, category_id, content_type, image_url, document_url, author, featured, published, req.params.id]
+      [title, description, category_id, content_type, image_url, file_url, author, featured, published, req.params.id]
     );
 
     res.json(result.rows[0]);

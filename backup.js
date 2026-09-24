@@ -1,4 +1,11 @@
-const pool = require('./backend/config/database');
+const { Pool } = require('pg');
+
+const connectionString = 'postgres://23ba521b480fac9174e7c3d77eeaa22b9699611871bfb371edbae69c03d0ac66:sk_u5uQz3XEmTBOn1w7L3Z9k@db.prisma.io:5432/postgres?sslmode=require';
+
+const pool = new Pool({
+  connectionString: connectionString,
+  ssl: { rejectUnauthorized: false }
+});
 const fs = require('fs');
 const path = require('path');
 
@@ -37,6 +44,8 @@ async function backupDatabase() {
   } catch (error) {
     console.error('❌ Backup failed:', error);
     throw error;
+  } finally {
+    await pool.end();
   }
 }
 
@@ -80,6 +89,8 @@ async function restoreDatabase(backupFile) {
   } catch (error) {
     console.error('❌ Restore failed:', error);
     throw error;
+  } finally {
+    await pool.end();
   }
 }
 

@@ -12,6 +12,9 @@ yarn-error.log*
 # Uploads directory
 backend/uploads/
 
+# Backups directory
+backups/
+
 # IDE
 .vscode/
 .idea/
