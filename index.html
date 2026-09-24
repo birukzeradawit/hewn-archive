@@ -36,6 +36,8 @@
       <a href="network.html">Network</a>
       <a href="knowledge.html">Knowledge Center</a>
       <a href="contact.html">Contact</a>
+      <a href="dashboard.html" id="dashboardLink" style="display: none;">Dashboard</a>
+      <a href="admin.html" id="adminLink" style="display: none;">Admin</a>
       <a href="login.html" id="loginLink">Login</a>
       <a href="signup.html" id="signupLink">Sign Up</a>
     </nav>
@@ -136,6 +138,23 @@
       <span class="hero-eyebrow mono">Heritage &middot; Knowledge &middot; Technology &middot; Sustainability</span>
       <h1>Preserving Ethiopia's heritage, <em>one record at a time.</em></h1>
       <p class="lede">HEWN Tech connects heritage, research, conservation, documentation, and technology &mdash; bringing archives, projects, and people together to protect knowledge for future generations.</p>
+      
+      <!-- Search Bar -->
+      <div class="search-section">
+        <form id="searchForm" class="search-form">
+          <input type="text" id="searchInput" placeholder="Search archives..." class="search-input">
+          <button type="submit" class="search-button">Search</button>
+        </form>
+        <div class="search-filters">
+          <select id="searchCategory" class="search-filter">
+            <option value="">All Categories</option>
+          </select>
+          <select id="searchType" class="search-filter">
+            <option value="">All Types</option>
+          </select>
+        </div>
+      </div>
+      
       <div class="hero-tags">
         <span>Archival Documentation</span>
         <span>Heritage Conservation</span>
@@ -150,6 +169,14 @@
     </div>
   </div>
 </section>
+
+<!-- Search Results -->
+<div class="search-results" id="searchResults">
+  <div class="search-result-item">
+    <div class="search-result-title">Search Results</div>
+    <div class="search-result-desc">Your search results will appear here</div>
+  </div>
+</div>
 
 <section class="block">
   <div class="wrap">
@@ -278,6 +305,136 @@ function updateAuthUI() {
 
 // Update auth UI on page load
 document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+// Auth UI update function
+function updateAuthUI() {
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const loginLink = document.getElementById('loginLink');
+  const signupLink = document.getElementById('signupLink');
+  const dashboardLink = document.getElementById('dashboardLink');
+  const adminLink = document.getElementById('adminLink');
+
+  if (token && user.id) {
+    // User is logged in
+    loginLink.textContent = 'Logout';
+    loginLink.setAttribute('data-logout', 'true');
+    loginLink.addEventListener('click', logout);
+    signupLink.style.display = 'none';
+    
+    // Show dashboard link
+    if (dashboardLink) {
+      dashboardLink.style.display = 'inline-block';
+    }
+    
+    // Show admin link for admin users
+    if (adminLink && user.role === 'admin') {
+      adminLink.style.display = 'inline-block';
+    }
+  } else {
+    // User is logged out
+    loginLink.textContent = 'Login';
+    loginLink.removeAttribute('data-logout');
+    loginLink.removeEventListener('click', logout);
+    signupLink.style.display = 'inline-block';
+    
+    // Hide dashboard and admin links
+    if (dashboardLink) {
+      dashboardLink.style.display = 'none';
+    }
+    if (adminLink) {
+      adminLink.style.display = 'none';
+    }
+  }
+}
+
+// Logout function
+function logout(e) {
+  e.preventDefault();
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  updateAuthUI();
+  window.location.href = 'index.html';
+}
+
+// Search functionality
+document.getElementById('searchForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const searchQuery = document.getElementById('searchInput').value;
+  const category = document.getElementById('searchCategory').value;
+  const searchType = document.getElementById('searchType').value;
+  const searchResults = document.getElementById('searchResults');
+  
+  if (!searchQuery.trim()) {
+    searchResults.style.display = 'none';
+    return;
+  }
+  
+  try {
+    const params = new URLSearchParams();
+    params.append('q', searchQuery);
+    if (category) params.append('category', category);
+    if (searchType) params.append('content_type', searchType);
+    
+    const response = await fetch(`/api/search?${params}`);
+    const data = await response.json();
+    
+    if (data.results && data.results.length > 0) {
+      searchResults.innerHTML = data.results.map(item => `
+        <div class="search-result-item" onclick="location.href='projects.html'">
+          <div class="search-result-title">${item.title}</div>
+          <div class="search-result-desc">${item.description || 'No description'}</div>
+          <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
+        </div>
+      `).join('');
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.innerHTML = `
+        <div class="search-result-item">
+          <div class="search-result-title">No results found</div>
+          <div class="search-result-desc">Try different search terms or filters</div>
+        </div>
+      `;
+      searchResults.style.display = 'block';
+    }
+  } catch (error) {
+    console.error('Search error:', error);
+    searchResults.innerHTML = `
+      <div class="search-result-item">
+        <div class="search-result-title">Search error</div>
+        <div class="search-result-desc">Please try again later</div>
+      </div>
+    `;
+    searchResults.style.display = 'block';
+  }
+});
+
+// Load search filters
+async function loadSearchFilters() {
+  try {
+    const response = await fetch('/api/search/filters');
+    const data = await response.json();
+    
+    const categorySelect = document.getElementById('searchCategory');
+    const typeSelect = document.getElementById('searchType');
+    
+    if (data.categories) {
+      categorySelect.innerHTML = '<option value="">All Categories</option>' + 
+        data.categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
+    }
+    
+    if (data.contentTypes) {
+      typeSelect.innerHTML = '<option value="">All Types</option>' + 
+        data.contentTypes.map(type => `<option value="${type.content_type}">${type.content_type}</option>`).join('');
+    }
+  } catch (error) {
+    console.error('Failed to load search filters:', error);
+  }
+}
+
+// Load filters on page load
+document.addEventListener('DOMContentLoaded', loadSearchFilters);
 </script>
 
 </body>

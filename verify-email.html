@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Email &mdash; HEWN Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
+<link rel="stylesheet" href="style.css?v=9">
+<style>
+.auth-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.auth-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.status-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.success-icon {
+  color: var(--accent-success);
+}
+
+.error-icon {
+  color: var(--accent-warning);
+}
+
+.message {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  background: #efe;
+  color: #3c3;
+  border: 1px solid #3c3;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  border: 1px solid #c33;
+}
+
+.auth-links {
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+.auth-links a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="loc-stripe">
+  <div class="stripe-cyan"></div>
+  <div class="stripe-orange"></div>
+</div>
+
+<div class="archive-bar">
+  <div class="wrap archive-bar-inner">
+    <span class="repo-loc mono">Addis Ababa, ET &middot; UTC+3</span>
+  </div>
+</div>
+
+<div class="auth-container">
+  <div class="auth-header">
+    <h1>Email Verification</h1>
+  </div>
+
+  <div id="statusIcon" class="status-icon">⏳</div>
+  <div id="message" class="message">Verifying your email...</div>
+
+  <div class="auth-links">
+    <p><a href="index.html">Return to Home</a></p>
+    <p><a href="login.html">Go to Login</a></p>
+  </div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  const statusIcon = document.getElementById('statusIcon');
+  const message = document.getElementById('message');
+
+  if (!token) {
+    statusIcon.textContent = '❌';
+    statusIcon.className = 'status-icon error-icon';
+    message.textContent = 'Invalid verification link. Please try again.';
+    message.className = 'message error-message';
+    return;
+  }
+
+  // Verify email with backend
+  fetch(`/api/auth/verify-email?token=${token}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        statusIcon.textContent = '✅';
+        statusIcon.className = 'status-icon success-icon';
+        message.textContent = data.message;
+        message.className = 'message success-message';
+      } else {
+        statusIcon.textContent = '❌';
+        statusIcon.className = 'status-icon error-icon';
+        message.textContent = 'Verification failed. Please try again.';
+        message.className = 'message error-message';
+      }
+    })
+    .catch(error => {
+      statusIcon.textContent = '❌';
+      statusIcon.className = 'status-icon error-icon';
+      message.textContent = 'Network error. Please try again.';
+      message.className = 'message error-message';
+    });
+});
+</script>
+
+</body>
+</html>

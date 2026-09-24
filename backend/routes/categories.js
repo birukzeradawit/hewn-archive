@@ -1,5 +1,6 @@
 const express = require('express');
 const pool = require('../config/database');
+const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -30,8 +31,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create category (admin only - would need auth middleware)
-router.post('/', async (req, res) => {
+// Create category (admin only)
+router.post('/', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { name, description } = req.body;
 
@@ -41,6 +42,25 @@ router.post('/', async (req, res) => {
     );
 
     res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Delete category (admin only)
+router.delete('/:id', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(
+      'DELETE FROM categories WHERE id = $1 RETURNING id',
+      [req.params.id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Category not found' });
+    }
+
+    res.json({ message: 'Category deleted successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
