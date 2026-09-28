@@ -3,171 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HEWN Tech &mdash; Heritage, Knowledge, Technology</title>
+<title>HEWN Tech Digital Archive &mdash; Preserving Ethiopia's Heritage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
-<div class="loc-stripe">
-  <div class="stripe-cyan"></div>
-  <div class="stripe-orange"></div>
-</div>
-
-<div class="archive-bar">
-  <div class="wrap archive-bar-inner">
-    <span class="repo-loc mono">Addis Ababa, ET &middot; UTC+3</span>
-  </div>
-</div>
-
-<header class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="brand" aria-label="HEWN Tech"><img src="hewn-tech-logo.jpg" alt="HEWN Tech - Preserving Ethiopia's Heritage" class="brand-logo-img"></a>
-    <button class="menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.site-nav').classList.toggle('nav-open')">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+<!-- Dark Purple Header -->
+<header class="new-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <a href="index.html" class="brand-link">
+        <img src="hewn-tech-logo.jpg" alt="HEWN Tech" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-name">HEWN Tech</span>
+          <span class="brand-tagline">Digital Archive</span>
+        </div>
+      </a>
+    </div>
+    <button class="mobile-menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.new-header').classList.toggle('menu-open')">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
     </button>
-    <nav class="links">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="archive-items.html">Archive</a>
-      <a href="network.html">Network</a>
-      <a href="knowledge.html">Knowledge Center</a>
-      <a href="contact.html">Contact</a>
-      <a href="dashboard.html" id="dashboardLink" style="display: none;">Dashboard</a>
-      <a href="admin.html" id="adminLink" style="display: none;">Admin</a>
-      <a href="login.html" id="loginLink">Login</a>
-      <a href="signup.html" id="signupLink">Sign Up</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="archive-items.html" class="nav-link">Visit the Archives</a>
+      <a href="projects.html" class="nav-link">Collections</a>
+      <a href="knowledge.html" class="nav-link">Research Guides</a>
+      <a href="network.html" class="nav-link">Online Resources</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="dashboard.html" id="dashboardLink" class="nav-link" style="display: none;">Dashboard</a>
+      <a href="admin.html" id="adminLink" class="nav-link" style="display: none;">Admin</a>
+      <a href="login.html" id="loginLink" class="nav-link">Login</a>
+      <a href="signup.html" id="signupLink" class="nav-link" style="display: none;">Sign Up</a>
     </nav>
   </div>
 </header>
 
-<!-- Historical Image Slideshow -->
-<section class="historical-slideshow">
-  <div class="slideshow-container">
-    <div class="slide active">
-      <img src="images/slide1.jpg" alt="Garima Gospels">
-
-    </div>
-    <div class="slide">
-      <img src="images/slide2.jpg" alt="Ge'ez Bible">
-
-    </div>
-    <div class="slide">
-      <img src="images/slide3.jpg" alt="Illuminated Ethiopian Gospel">
-
-    </div>
-    <div class="slide">
-      <img src="images/slide4.jpg" alt="British Library Ethiopian Bible">
-
-    </div>
-    <div class="slide">
-      <img src="images/slide5.jpg" alt="The Great Obelisk at Aksum">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stelae_Field_in_Axum,_Ethiopia_(2830293765).jpg" alt="Stelae Field in Aksum">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rock-Hewn_Churches,_Lalibela-107577.jpg" alt="Rock-Hewn Churches of Lalibela">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bet_Giyorgis_from_the_Northeast_(3278917075).jpg" alt="Bet Giyorgis Church">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Abba-Garima-gospel.jpg" alt="Garima Gospels - Oldest Illuminated Christian Manuscripts">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Matthew%27s_Gospel_-_British_Library_Add._MS_59874_Ethiopian_Bible.jpg" alt="British Library Ethiopian Bible - Matthew's Gospel">
-
-    </div>
-    <div class="slide">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/New_Church_of_St._Mary_of_Zion,_Axum,_Ethiopia_(2846160704).jpg" alt="Church of St. Mary of Zion, Axum">
-
-    </div>
+<!-- Hero Section with Ethiopian Manuscript Background -->
+<section class="hero-section">
+  <div class="hero-background">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Abba-Garima-gospel.jpg" alt="Ethiopian Manuscript Background" class="hero-bg-image">
+    <div class="hero-overlay"></div>
   </div>
-  <div class="slideshow-nav">
-    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-    <div class="dots">
-      <span class="dot active" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-      <span class="dot" onclick="goToSlide(2)"></span>
-      <span class="dot" onclick="goToSlide(3)"></span>
-      <span class="dot" onclick="goToSlide(4)"></span>
-      <span class="dot" onclick="goToSlide(5)"></span>
-      <span class="dot" onclick="goToSlide(6)"></span>
-      <span class="dot" onclick="goToSlide(7)"></span>
-      <span class="dot" onclick="goToSlide(8)"></span>
-      <span class="dot" onclick="goToSlide(9)"></span>
-      <span class="dot" onclick="goToSlide(10)"></span>
-      <span class="dot" onclick="goToSlide(11)"></span>
-    </div>
-    <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
-  </div>
-</section>
-
-<!-- Heritage Archive Visual Banner -->
-<section class="archive-banner">
-  <div class="wrap">
-    <div class="archive-visual">
-      <div class="archive-books">
-        <div class="book-spine"></div>
-        <div class="book-spine"></div>
-        <div class="book-spine"></div>
-        <div class="book-spine"></div>
-        <div class="book-spine"></div>
-      </div>
-      <div class="archive-manuscript">
-        <div class="manuscript-page"></div>
-        <div class="manuscript-page"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="hero-eyebrow mono">Heritage &middot; Knowledge &middot; Technology &middot; Sustainability</span>
-      <h1>Preserving Ethiopia's heritage, <em>one record at a time.</em></h1>
-      <p class="lede">HEWN Tech connects heritage, research, conservation, documentation, and technology &mdash; bringing archives, projects, and people together to protect knowledge for future generations.</p>
+  
+  <div class="hero-content">
+    <div class="hero-search-container">
+      <h1 class="hero-title">The HEWN Tech Digital Archive</h1>
+      <p class="hero-subtitle">Preserving Ethiopia's Heritage and Knowledge</p>
       
       <!-- Search Bar -->
-      <div class="search-section">
-        <form id="searchForm" class="search-form">
-          <input type="text" id="searchInput" placeholder="Search archives..." class="search-input">
-          <button type="submit" class="search-button">Search</button>
+      <div class="hero-search">
+        <form id="searchForm" class="search-bar">
+          <input type="text" id="searchInput" placeholder="Enter a keyword or phrase to search the HEWN Tech archive..." class="search-input">
+          <button type="submit" class="search-btn">Search</button>
+          <div class="search-advanced">
+            <select id="searchAdvanced" class="advanced-select">
+              <option value="">Advanced</option>
+              <option value="manuscripts">Manuscripts</option>
+              <option value="churches">Churches</option>
+              <option value="obelisks">Obelisks</option>
+              <option value="artifacts">Artifacts</option>
+              <option value="photographs">Photographs</option>
+            </select>
+          </div>
         </form>
-        <div class="search-filters">
-          <select id="searchCategory" class="search-filter">
-            <option value="">All Categories</option>
-          </select>
-          <select id="searchType" class="search-filter">
-            <option value="">All Types</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="hero-tags">
-        <span>Archival Documentation</span>
-        <span>Heritage Conservation</span>
-        <span>Digital Preservation</span>
       </div>
     </div>
-    <div class="hero-side">
-      <div class="quote-block">
-        <p>"Preserve the past. Understand the present. Inspire the future."</p>
-        <span class="cite mono">&mdash; HEWN Tech philosophy</span>
+  </div>
+</section>
+
+<!-- Feature Cards -->
+<section class="feature-cards">
+  <div class="cards-container">
+    <a href="archive-items.html" class="feature-card">
+      <div class="card-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rock-Hewn_Churches,_Lalibela-107577.jpg" alt="Ethiopian Churches">
       </div>
-    </div>
+      <div class="card-content">
+        <h3 class="card-title">Access Ethiopian Heritage</h3>
+        <p class="card-description">Open to the public and free to access. Explore our digital collections today.</p>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+    
+    <a href="projects.html" class="feature-card">
+      <div class="card-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stelae_Field_in_Axum,_Ethiopia_(2830293765).jpg" alt="Ancient Obelisks">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Explore Collections</h3>
+        <p class="card-description">Hints and tips on using the Archive and other online resources.</p>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+    
+    <a href="knowledge.html" class="feature-card">
+      <div class="card-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bet_Giyorgis_from_the_Northeast_(3278917075).jpg" alt="Heritage Documentation">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">Knowledge Resources</h3>
+        <p class="card-description">We hold millions of historical documents and cultural heritage items.</p>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -179,56 +123,6 @@
   </div>
 </div>
 
-<section class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="accession">About this website</span>
-        <h2>A platform for heritage and knowledge</h2>
-        <p>HEWN Tech brings together projects, research, archival resources, exhibitions, learning opportunities, and networks in one place &mdash; designed to make knowledge easier to discover, explore, share, and use.</p>
-      </div>
-    </div>
-
-    <div class="quick-links">
-      <a href="about.html">
-        <span class="num mono">01</span>
-        <h3>About</h3>
-        <p>Helen Gigar Tesfaye, the HEWN Tech vision, and the story behind the archive.</p>
-      </a>
-      <a href="projects.html">
-        <span class="num mono">02</span>
-        <h3>Projects</h3>
-        <p>The Gigar Tesfaye Archive, virtual and photo exhibitions, and what's ahead.</p>
-      </a>
-      <a href="network.html">
-        <span class="num mono">03</span>
-        <h3>Network</h3>
-        <p>Institutions, professionals, and communities collaborating on heritage work.</p>
-      </a>
-      <a href="knowledge.html">
-        <span class="num mono">04</span>
-        <h3>Knowledge Center</h3>
-        <p>Archival collections, research, GIS documentation, and training resources.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="block band-paper">
-  <div class="wrap inspiration">
-    <div class="inspiration-mark">
-      <span class="mono">Origin</span>
-      <h3>My Inspiration</h3>
-      <span class="role">A daughter's tribute</span>
-    </div>
-    <div>
-      <p>This journey began with my father, Gigar Tesfaye. Growing up, I remember the excitement I felt whenever he returned from his fieldwork &mdash; always reading, writing, researching, and documenting.</p>
-      <p>My respect and love for his work inspired me to begin this journey &mdash; to preserve what he left behind, make his knowledge more accessible, and build on the values he devoted his life to.</p>
-      <p><a href="about.html" style="color:var(--indigo-deep); border-bottom:1px solid var(--gold); text-decoration:none;">Read the full story on the About page &rarr;</a></p>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
@@ -236,6 +130,116 @@
     <div class="footer-colophon">ARCHIVAL PRESERVATION PROTOCOL</div>
   </div>
 </footer>
+
+<script>
+// Authentication state management
+function updateAuthUI() {
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const loginLink = document.getElementById('loginLink');
+  const signupLink = document.getElementById('signupLink');
+  const dashboardLink = document.getElementById('dashboardLink');
+  const adminLink = document.getElementById('adminLink');
+
+  if (token && user.id) {
+    // User is logged in
+    loginLink.textContent = 'Logout';
+    loginLink.setAttribute('data-logout', 'true');
+    loginLink.addEventListener('click', logout);
+    signupLink.style.display = 'none';
+    
+    // Show dashboard link
+    if (dashboardLink) {
+      dashboardLink.style.display = 'inline-block';
+    }
+    
+    // Show admin link for admin users
+    if (adminLink && user.role === 'admin') {
+      adminLink.style.display = 'inline-block';
+    }
+  } else {
+    // User is logged out
+    loginLink.textContent = 'Login';
+    loginLink.removeAttribute('data-logout');
+    loginLink.removeEventListener('click', logout);
+    signupLink.style.display = 'inline-block';
+    
+    // Hide dashboard and admin links
+    if (dashboardLink) {
+      dashboardLink.style.display = 'none';
+    }
+    if (adminLink) {
+      adminLink.style.display = 'none';
+    }
+  }
+}
+
+// Logout function
+function logout(e) {
+  e.preventDefault();
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  updateAuthUI();
+  window.location.href = 'index.html';
+}
+
+// Search functionality
+document.getElementById('searchForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const searchQuery = document.getElementById('searchInput').value;
+  const advanced = document.getElementById('searchAdvanced').value;
+  const searchResults = document.getElementById('searchResults');
+  
+  if (!searchQuery.trim()) {
+    searchResults.style.display = 'none';
+    return;
+  }
+  
+  try {
+    const params = new URLSearchParams();
+    params.append('q', searchQuery);
+    if (advanced) params.append('category', advanced);
+    
+    const response = await fetch(`/api/search?${params}`);
+    const data = await response.json();
+    
+    if (data.results && data.results.length > 0) {
+      searchResults.innerHTML = data.results.map(item => `
+        <div class="search-result-item" onclick="location.href='projects.html'">
+          <div class="search-result-title">${item.title}</div>
+          <div class="search-result-desc">${item.description || 'No description'}</div>
+          <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
+        </div>
+      `).join('');
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.innerHTML = `
+        <div class="search-result-item">
+          <div class="search-result-title">No results found</div>
+          <div class="search-result-desc">Try different search terms or filters</div>
+        </div>
+      `;
+      searchResults.style.display = 'block';
+    }
+  } catch (error) {
+    console.error('Search error:', error);
+    searchResults.innerHTML = `
+      <div class="search-result-item">
+        <div class="search-result-title">Search error</div>
+        <div class="search-result-desc">Please try again later</div>
+      </div>
+    `;
+    searchResults.style.display = 'block';
+  }
+});
+
+// Update auth UI on page load
+document.addEventListener('DOMContentLoaded', updateAuthUI);
+</script>
+
+</body>
+</html>
 
 <script>
 let currentSlide = 0;
