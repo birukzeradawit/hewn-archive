@@ -27,6 +27,8 @@ app.use('/api/content', require('./routes/content'));
 app.use('/api/uploads', require('./routes/uploads'));
 app.use('/api/archive', require('./routes/archive'));
 app.use('/api/search', require('./routes/search'));
+app.use('/api/knowledge-resources', require('./routes/knowledge'));
+app.use('/api/partners', require('./routes/partners'));
 
 // Serve static files from the frontend
 app.use(express.static(path.join(__dirname, '..')));

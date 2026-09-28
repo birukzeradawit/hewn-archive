@@ -246,6 +246,28 @@
   </div>
 </div>
 
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" aria-label="HEWN Tech"><img src="hewn-tech-logo.jpg" alt="HEWN Tech - Preserving Ethiopia's Heritage" class="brand-logo-img"></a>
+    <button class="menu-toggle" aria-label="Toggle Navigation" onclick="document.querySelector('.site-nav').classList.toggle('nav-open')">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive-items.html">Archive</a>
+      <a href="network.html">Network</a>
+      <a href="knowledge.html">Knowledge Center</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="admin.html" id="adminLink" style="display: none;">Admin</a>
+      <a href="#" id="logoutLink">Logout</a>
+    </nav>
+  </div>
+</header>
+
 <div class="dashboard-container">
   <div class="dashboard-header">
     <h1>User Dashboard</h1>
@@ -588,10 +610,33 @@ async function deleteAccount() {
   }
 }
 
-// Initialize
-if (checkAuth()) {
-  loadProfile();
+// Logout function
+document.getElementById('logoutLink').addEventListener('click', async (e) => {
+  e.preventDefault();
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  window.location.href = 'index.html';
+});
+
+// Update auth UI
+function updateAuthUI() {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const adminLink = document.getElementById('adminLink');
+  
+  if (user.role === 'admin') {
+    adminLink.style.display = 'inline-block';
+  } else {
+    adminLink.style.display = 'none';
+  }
 }
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  if (checkAuth()) {
+    updateAuthUI();
+    loadProfile();
+  }
+});
 </script>
 
 </body>

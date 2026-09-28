@@ -33,6 +33,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
+      <a href="archive-items.html">Archive</a>
       <a href="network.html" class="active">Network</a>
       <a href="knowledge.html">Knowledge Center</a>
       <a href="contact.html">Contact</a>
@@ -235,6 +236,23 @@
   </div>
 </section>
 
+<!-- Dynamic Partners Section -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="accession">Database Partners</span>
+        <h2>Our Collaborators</h2>
+        <p>Partner organizations managed through our system</p>
+      </div>
+    </div>
+
+    <div class="partners-cards-list" id="partnersGrid">
+      <div class="loading">Loading partners...</div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
@@ -328,6 +346,44 @@ function logout(e) {
 
 // Update auth UI on page load
 document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+// Load partners from database
+async function loadPartners() {
+  const partnersGrid = document.getElementById('partnersGrid');
+  partnersGrid.innerHTML = '<div class="loading">Loading partners...</div>';
+  
+  try {
+    const response = await fetch('/api/partners');
+    const partners = await response.json();
+    
+    if (partners.length === 0) {
+      partnersGrid.innerHTML = '<div class="no-content">No partner organizations added yet through the admin system.</div>';
+      return;
+    }
+    
+    partnersGrid.innerHTML = partners.map(partner => `
+      <div class="partner-entry-card">
+        <div class="partner-logo-and-info">
+          ${partner.logo_url ? `<div class="partner-emblem"><img src="${partner.logo_url}" alt="${partner.name}" style="width:36px;height:36px;"></div>` : '<div class="partner-emblem" title="Partner"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor"><rect x="2" y="2" width="32" height="32" rx="4" stroke="var(--line-strong)" stroke-width="1.5" fill="var(--paper)"></rect><text x="18" y="22" font-family="'IBM Plex Mono',monospace" font-size="6" font-weight="700" fill="var(--indigo-deep)" text-anchor="middle">HP</text></svg></div>'}
+          <div class="partner-title-group">
+            <h4>${partner.name}</h4>
+            <span class="partner-meta mono">${partner.organization || 'Partner Organization'}</span>
+          </div>
+        </div>
+        ${partner.website ? `<a href="${partner.website}" target="_blank" rel="noopener noreferrer" class="partner-site-btn mono"><span>${new URL(partner.website).hostname}</span> &rarr;</a>` : ''}
+        ${partner.contact_email ? `<div style="margin-top:10px;font-size:0.8rem;color:var(--text-secondary);"><a href="mailto:${partner.contact_email}" style="color:var(--accent-primary);text-decoration:none;">${partner.contact_email}</a></div>` : ''}
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Failed to load partners:', error);
+    partnersGrid.innerHTML = '<div class="no-content">Failed to load partners. Please try again later.</div>';
+  }
+}
+
+// Load partners on page load
+document.addEventListener('DOMContentLoaded', () => {
+  loadPartners();
+});
 </script>
 
 </body>

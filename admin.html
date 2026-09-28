@@ -252,6 +252,8 @@
     <button class="active" data-section="content">Content</button>
     <button data-section="categories">Categories</button>
     <button data-section="archive">Archive</button>
+    <button data-section="partners">Partners</button>
+    <button data-section="knowledge">Knowledge</button>
   </div>
 
   <div class="message success-message" id="successMessage"></div>
@@ -435,6 +437,134 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Partners Section -->
+  <div class="admin-section" id="partners-section">
+    <div class="admin-form">
+      <h2>Add Partner</h2>
+      <form id="partnerForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="partnerName">Organization Name</label>
+            <input type="text" id="partnerName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="partnerOrganization">Organization Type</label>
+            <input type="text" id="partnerOrganization" name="organization">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="partnerDescription">Description</label>
+          <textarea id="partnerDescription" name="description"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="partnerWebsite">Website</label>
+            <input type="url" id="partnerWebsite" name="website">
+          </div>
+          <div class="form-group">
+            <label for="partnerLogo">Logo URL</label>
+            <input type="url" id="partnerLogo" name="logo_url">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="partnerEmail">Contact Email</label>
+          <input type="email" id="partnerEmail" name="contact_email">
+        </div>
+        <button type="submit" class="admin-button">Add Partner</button>
+      </form>
+    </div>
+
+    <h2>Partners</h2>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Organization</th>
+          <th>Website</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="partnersTableBody">
+        <tr><td colspan="4">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Knowledge Section -->
+  <div class="admin-section" id="knowledge-section">
+    <div class="admin-form">
+      <h2>Add Knowledge Resource</h2>
+      <form id="knowledgeForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="knowledgeTitle">Title</label>
+            <input type="text" id="knowledgeTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="knowledgeType">Resource Type</label>
+            <select id="knowledgeType" name="resource_type">
+              <option value="article">Article</option>
+              <option value="document">Document</option>
+              <option value="video">Video</option>
+              <option value="dataset">Dataset</option>
+              <option value="guide">Guide</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="knowledgeDescription">Description</label>
+          <textarea id="knowledgeDescription" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="knowledgeContent">Content</label>
+          <textarea id="knowledgeContent" name="content"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="knowledgeFile">File URL</label>
+            <input type="url" id="knowledgeFile" name="file_url">
+          </div>
+          <div class="form-group">
+            <label for="knowledgeLink">External Link</label>
+            <input type="url" id="knowledgeLink" name="external_link">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="knowledgeCategory">Category</label>
+            <input type="text" id="knowledgeCategory" name="category">
+          </div>
+          <div class="form-group">
+            <label for="knowledgeAuthor">Author</label>
+            <input type="text" id="knowledgeAuthor" name="author">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="knowledgePublished" name="published"> Published
+          </label>
+        </div>
+        <button type="submit" class="admin-button">Add Knowledge Resource</button>
+      </form>
+    </div>
+
+    <h2>Knowledge Resources</h2>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Published</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="knowledgeTableBody">
+        <tr><td colspan="5">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script>
@@ -458,7 +588,8 @@ document.querySelectorAll('.admin-nav button').forEach(button => {
     document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
     
     button.classList.add('active');
-    document.getElementById(`${button.dataset.section}-section`).classList.add('active');
+    const section = button.dataset.section;
+    document.getElementById(`${section}-section`).classList.add('active');
   });
 });
 
@@ -514,7 +645,6 @@ async function loadContent() {
         <td>${item.featured ? 'Yes' : 'No'}</td>
         <td>
           <div class="action-buttons">
-            <button class="edit" onclick="editContent(${item.id})">Edit</button>
             <button class="delete" onclick="deleteContent(${item.id})">Delete</button>
           </div>
         </td>
@@ -540,7 +670,6 @@ async function loadArchive() {
         <td>${item.year || '-'}</td>
         <td>
           <div class="action-buttons">
-            <button class="edit" onclick="editArchive(${item.id})">Edit</button>
             <button class="delete" onclick="deleteArchive(${item.id})">Delete</button>
           </div>
         </td>
@@ -710,11 +839,167 @@ async function deleteArchive(id) {
   }
 }
 
+// Load partners
+async function loadPartners() {
+  try {
+    const response = await fetch('/api/partners');
+    const data = await response.json();
+    
+    const tbody = document.getElementById('partnersTableBody');
+    tbody.innerHTML = data.map(partner => `
+      <tr>
+        <td>${partner.name}</td>
+        <td>${partner.organization || '-'}</td>
+        <td>${partner.website ? `<a href="${partner.website}" target="_blank">${partner.website}</a>` : '-'}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="delete" onclick="deletePartner(${partner.id})">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  } catch (error) {
+    console.error('Failed to load partners:', error);
+  }
+}
+
+// Partner form submission
+document.getElementById('partnerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+  
+  try {
+    const response = await fetch('/api/partners', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(data)
+    });
+    
+    if (response.ok) {
+      showMessage('success', 'Partner added successfully');
+      e.target.reset();
+      loadPartners();
+    } else {
+      const error = await response.json();
+      showMessage('error', error.message || 'Failed to add partner');
+    }
+  } catch (error) {
+    showMessage('error', 'Network error');
+  }
+});
+
+async function deletePartner(id) {
+  if (!confirm('Are you sure you want to delete this partner?')) return;
+  
+  try {
+    const response = await fetch(`/api/partners/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    
+    if (response.ok) {
+      showMessage('success', 'Partner deleted successfully');
+      loadPartners();
+    } else {
+      showMessage('error', 'Failed to delete partner');
+    }
+  } catch (error) {
+    showMessage('error', 'Network error');
+  }
+}
+
+// Load knowledge resources
+async function loadKnowledge() {
+  try {
+    const response = await fetch('/api/knowledge-resources');
+    const data = await response.json();
+    
+    const tbody = document.getElementById('knowledgeTableBody');
+    tbody.innerHTML = data.map(resource => `
+      <tr>
+        <td>${resource.title}</td>
+        <td>${resource.resource_type || '-'}</td>
+        <td>${resource.category || '-'}</td>
+        <td>${resource.published ? 'Yes' : 'No'}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="delete" onclick="deleteKnowledge(${resource.id})">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  } catch (error) {
+    console.error('Failed to load knowledge resources:', error);
+  }
+}
+
+// Knowledge form submission
+document.getElementById('knowledgeForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+  data.published = document.getElementById('knowledgePublished').checked;
+  
+  try {
+    const response = await fetch('/api/knowledge-resources', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(data)
+    });
+    
+    if (response.ok) {
+      showMessage('success', 'Knowledge resource added successfully');
+      e.target.reset();
+      loadKnowledge();
+    } else {
+      const error = await response.json();
+      showMessage('error', error.message || 'Failed to add knowledge resource');
+    }
+  } catch (error) {
+    showMessage('error', 'Network error');
+  }
+});
+
+async function deleteKnowledge(id) {
+  if (!confirm('Are you sure you want to delete this knowledge resource?')) return;
+  
+  try {
+    const response = await fetch(`/api/knowledge-resources/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    
+    if (response.ok) {
+      showMessage('success', 'Knowledge resource deleted successfully');
+      loadKnowledge();
+    } else {
+      showMessage('error', 'Failed to delete knowledge resource');
+    }
+  } catch (error) {
+    showMessage('error', 'Network error');
+  }
+}
+
 // Initialize
 if (checkAuth()) {
   loadCategories();
   loadContent();
   loadArchive();
+  loadPartners();
+  loadKnowledge();
 }
 </script>
 

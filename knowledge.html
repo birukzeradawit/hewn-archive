@@ -33,6 +33,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
+      <a href="archive-items.html">Archive</a>
       <a href="network.html">Network</a>
       <a href="knowledge.html" class="active">Knowledge Center</a>
       <a href="contact.html">Contact</a>
@@ -119,6 +120,21 @@
         <h3>Training</h3>
         <p>Learning resources, workshops, and practical training for students, researchers, and heritage professionals.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Knowledge Resources Section -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Knowledge Resources</h2>
+      <p>Research papers, documentation, and educational materials</p>
+    </div>
+    
+    <!-- Knowledge Resources Grid -->
+    <div class="content-grid" id="knowledgeGrid">
+      <div class="loading">Loading knowledge resources...</div>
     </div>
   </div>
 </section>
@@ -216,6 +232,46 @@ function logout(e) {
 
 // Update auth UI on page load
 document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+// Load knowledge resources
+async function loadKnowledgeResources() {
+  const knowledgeGrid = document.getElementById('knowledgeGrid');
+  knowledgeGrid.innerHTML = '<div class="loading">Loading knowledge resources...</div>';
+  
+  try {
+    const response = await fetch('/api/knowledge-resources');
+    const resources = await response.json();
+    
+    if (resources.length === 0) {
+      knowledgeGrid.innerHTML = '<div class="no-content">No knowledge resources available yet. Check back soon for research papers and educational materials.</div>';
+      return;
+    }
+    
+    knowledgeGrid.innerHTML = resources.map(resource => `
+      <div class="content-card">
+        <div class="content-card-content">
+          <div class="content-card-category">${resource.resource_type || 'General'}</div>
+          <h3 class="content-card-title">${resource.title}</h3>
+          <p class="content-card-description">${resource.description || 'No description available'}</p>
+          <div class="content-card-meta">
+            <span>${resource.author || 'Unknown'}</span>
+            <span>${resource.category || 'Uncategorized'}</span>
+          </div>
+          ${resource.file_url ? `<a href="${resource.file_url}" class="filter-btn" style="margin-top:15px;display:inline-block;">Download</a>` : ''}
+          ${resource.external_link ? `<a href="${resource.external_link}" class="filter-btn" style="margin-top:15px;display:inline-block;">View Resource</a>` : ''}
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Failed to load knowledge resources:', error);
+    knowledgeGrid.innerHTML = '<div class="no-content">Failed to load knowledge resources. Please try again later.</div>';
+  }
+}
+
+// Load knowledge resources on page load
+document.addEventListener('DOMContentLoaded', () => {
+  loadKnowledgeResources();
+});
 </script>
 
 </body>
