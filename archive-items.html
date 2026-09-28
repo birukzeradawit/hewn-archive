@@ -98,6 +98,158 @@
   line-height: 1.2;
 }
 
+/* Projects Content Styles */
+.page-header {
+  background: var(--bg-tertiary);
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.page-header .accession {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin: 10px 0;
+}
+
+.page-header p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.project-row {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  align-items: flex-start;
+}
+
+.project-row .acc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  font-weight: 600;
+  padding: 10px 15px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.project-row h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0 0 10px 0;
+}
+
+.project-row p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.project-row .status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent-success);
+  padding: 5px 10px;
+  background: rgba(93, 138, 102, 0.1);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.sub-archives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sub-archive-card {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.sub-archive-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.sub-archive-badge {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-primary);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.sub-archive-body h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.sub-archive-body p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.sub-archive-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.future-note {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 4px;
+}
+
+.future-note p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
 .archive-item-type {
   display: inline-block;
   background: var(--bg-tertiary);
@@ -161,8 +313,7 @@
     <nav class="header-nav">
       <a href="index.html" class="nav-link">Home</a>
       <a href="archive-items.html" class="nav-link active">Visit the Archives</a>
-      <a href="projects.html" class="nav-link">Collections</a>
-      <a href="knowledge.html" class="nav-link">Research Guides</a>
+      <a href="knowledge.html" class="nav-link">Knowledge</a>
       <a href="network.html" class="nav-link">Online Resources</a>
       <a href="about.html" class="nav-link">About Us</a>
       <a href="contact.html" class="nav-link">Contact</a>
@@ -175,6 +326,72 @@
 </header>
 
 <div class="archive-items-container">
+  <!-- Projects Content Moved Here -->
+  <div class="page-header">
+    <div class="wrap">
+      <span class="accession">Projects</span>
+      <h1>Our work</h1>
+      <p>Explore ongoing and developing projects that connect heritage, research, documentation, conservation, technology, and knowledge.</p>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="projects-list">
+        <div class="project-row">
+          <span class="acc">ARC&nbsp;001</span>
+          <div>
+            <h3>Archive</h3>
+            <p>Central repository collections dedicated to identifying, documenting, cataloging, and preserving Ethiopia's cultural, archaeological, and documentary heritage.</p>
+            <div class="sub-archives">
+              <a href="gigar-tesfaye-archive.html" class="sub-archive-card">
+                <div class="sub-archive-badge mono"></div>
+                <div class="sub-archive-body">
+                  <h4>Gigar Tesfaye Archive &rarr;</h4>
+                  <p>Preserving and presenting the scholarly and documentary legacy of Gigar Tesfaye — historical photographs, publications, field notes, and archaeological records.</p>
+                  <span class="sub-archive-btn mono">Open Archive &amp; Biography &rarr;</span>
+                </div>
+              </a>
+              <a href="#" class="sub-archive-card" onclick="document.getElementById('archiveSection').scrollIntoView({behavior: 'smooth'})">
+                <div class="sub-archive-badge mono"></div>
+                <div class="sub-archive-body">
+                  <h4>Browse Archive Items &rarr;</h4>
+                  <p>Explore our comprehensive collection of Ethiopian heritage materials including manuscripts, documents, photographs, and artifacts.</p>
+                  <span class="sub-archive-btn mono">Browse Collection &rarr;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <span class="status">Active Collection</span>
+        </div>
+        <div class="project-row">
+          <span class="acc">EXH&nbsp;002</span>
+          <div>
+            <h3>Virtual Exhibition</h3>
+            <p>Creating digital experiences that bring heritage, research, stories, and visual materials to wider audiences — connecting archival evidence with public interpretation.</p>
+          </div>
+          <span class="status">In development</span>
+        </div>
+        <div class="project-row">
+          <span class="acc">EXH&nbsp;003</span>
+          <div>
+            <h3>Photo Exhibition</h3>
+            <p>Curating and presenting photographic documentation of Ethiopia's heritage, places, people, and cultural history.</p>
+          </div>
+          <span class="status">In development</span>
+        </div>
+      </div>
+
+      <div class="future-note">
+        <p><strong style="color:var(--indigo-deep);">Future projects.</strong> New initiatives in heritage documentation, conservation, research, GIS, and sustainable development will be added as this platform grows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archive Items Section -->
+  <div class="archive-header" id="archiveSection">
+    <h1>Browse Archive Items</h1>
+  </div>
   <div class="archive-header">
     <h1>Archive Collection</h1>
     <p>Browse our comprehensive collection of Ethiopian heritage materials</p>
@@ -268,8 +485,8 @@ async function loadArchiveItems(filter = 'all') {
     }
     
     archiveGrid.innerHTML = items.map(item => `
-      <div class="archive-item-card">
-        ${item.image_url ? `<img src="${item.image_url}" alt="${item.title}" class="archive-item-image">` : '<div class="archive-item-image" style="display:flex;align-items:center;justify-content:center;background:var(--bg-tertiary);color:var(--text-tertiary);">No Image</div>'}
+      <div class="archive-item-card" ${item.image_url ? 'data-has-image="true"' : 'data-has-image="false"'}>
+        ${item.image_url ? `<img src="${item.image_url}" alt="${item.title}" class="archive-item-image">` : ''}
         <div class="archive-item-content">
           <div class="archive-item-collection">${item.collection_name || 'General Collection'}</div>
           <h3 class="archive-item-title">${item.title}</h3>

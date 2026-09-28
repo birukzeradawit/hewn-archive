@@ -31,8 +31,7 @@
     <nav class="header-nav">
       <a href="index.html" class="nav-link active">Home</a>
       <a href="archive-items.html" class="nav-link">Visit the Archives</a>
-      <a href="projects.html" class="nav-link">Collections</a>
-      <a href="knowledge.html" class="nav-link">Research Guides</a>
+      <a href="knowledge.html" class="nav-link">Knowledge</a>
       <a href="network.html" class="nav-link">Online Resources</a>
       <a href="about.html" class="nav-link">About Us</a>
       <a href="contact.html" class="nav-link">Contact</a>
@@ -91,13 +90,13 @@
       </div>
     </a>
     
-    <a href="projects.html" class="feature-card">
+    <a href="archive-items.html#archiveSection" class="feature-card">
       <div class="card-image">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stelae_Field_in_Axum,_Ethiopia_(2830293765).jpg" alt="Ancient Obelisks">
       </div>
       <div class="card-content">
-        <h3 class="card-title">Explore Collections</h3>
-        <p class="card-description">Hints and tips on using the Archive and other online resources.</p>
+        <h3 class="card-title">Browse Archive Items</h3>
+        <p class="card-description">Explore our comprehensive collection of Ethiopian heritage materials.</p>
         <div class="card-arrow">→</div>
       </div>
     </a>
@@ -205,16 +204,26 @@ document.getElementById('searchForm').addEventListener('submit', async (e) => {
     const data = await response.json();
     
     if (data.results && data.results.length > 0) {
-      searchResults.innerHTML = data.results.map(item => `
-        <div class="search-result-item" onclick="location.href='projects.html'">
-          <div class="search-result-title">${item.title}</div>
-          <div class="search-result-desc">${item.description || 'No description'}</div>
-          <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
+      searchResults.innerHTML = `
+        <div class="search-results-header">
+          <span class="search-results-count">${data.results.length} results found</span>
+          <button class="search-results-close" onclick="closeSearchResults()">✕</button>
         </div>
-      `).join('');
+        ${data.results.map(item => `
+          <div class="search-result-item" onclick="location.href='archive-items.html'">
+            <div class="search-result-title">${item.title}</div>
+            <div class="search-result-desc">${item.description || 'No description'}</div>
+            <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
+          </div>
+        `).join('')}
+      `;
       searchResults.style.display = 'block';
     } else {
       searchResults.innerHTML = `
+        <div class="search-results-header">
+          <span class="search-results-count">No results found</span>
+          <button class="search-results-close" onclick="closeSearchResults()">✕</button>
+        </div>
         <div class="search-result-item">
           <div class="search-result-title">No results found</div>
           <div class="search-result-desc">Try different search terms or filters</div>
@@ -225,12 +234,33 @@ document.getElementById('searchForm').addEventListener('submit', async (e) => {
   } catch (error) {
     console.error('Search error:', error);
     searchResults.innerHTML = `
+      <div class="search-results-header">
+        <span class="search-results-count">Search error</span>
+        <button class="search-results-close" onclick="closeSearchResults()">✕</button>
+      </div>
       <div class="search-result-item">
         <div class="search-result-title">Search error</div>
         <div class="search-result-desc">Please try again later</div>
       </div>
     `;
     searchResults.style.display = 'block';
+  }
+});
+
+// Close search results function
+function closeSearchResults() {
+  const searchResults = document.getElementById('searchResults');
+  searchResults.style.display = 'none';
+}
+
+// Close search results when clicking outside
+document.addEventListener('click', (e) => {
+  const searchResults = document.getElementById('searchResults');
+  const searchForm = document.getElementById('searchForm');
+  if (searchResults.style.display === 'block' && 
+      !searchResults.contains(e.target) && 
+      !searchForm.contains(e.target)) {
+    searchResults.style.display = 'none';
   }
 });
 

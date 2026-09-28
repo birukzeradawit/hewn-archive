@@ -964,6 +964,18 @@ nav.links a#loginLink[data-logout="true"]:hover {
   font-size: 0.9rem;
 }
 
+.archive-item-image[src=""] {
+  display: none;
+}
+
+.archive-item-image:not([src]) {
+  display: none;
+}
+
+.archive-item-card[data-has-image="false"] .archive-item-content {
+  padding-top: 30px;
+}
+
 .archive-item-content {
   padding: 25px;
 }
@@ -1499,6 +1511,42 @@ nav.links a#loginLink[data-logout="true"]:hover {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
   color: var(--text-tertiary);
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.search-results-count {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.search-results-close {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.search-results-close:hover {
+  background: var(--accent-secondary);
 }
 
 .stamp-year {
