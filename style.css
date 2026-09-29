@@ -1363,97 +1363,91 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 /* ==========================================================================
-   FEATURE CARDS
+   CATEGORY CARDS
    ========================================================================== */
-.feature-cards {
-  max-width: 1400px;
+.category-cards {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
 }
 
-.cards-container {
+.category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-.feature-card {
+.category-card {
   background: var(--bg-secondary);
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 12px;
+  padding: 40px 30px;
   text-decoration: none;
   color: var(--text-primary);
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid var(--border-light);
 }
 
-.feature-card:hover {
+.category-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--header-bg);
 }
 
-.card-image {
-  height: 200px;
-  overflow: hidden;
+.category-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: var(--header-bg);
+  transition: transform 0.3s ease;
 }
 
-.card-image img {
+.category-card:hover .category-icon {
+  transform: scale(1.1);
+}
+
+.category-icon svg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.feature-card:hover .card-image img {
-  transform: scale(1.05);
-}
-
-.card-content {
-  padding: 25px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-title {
+.category-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  color: var(--header-bg);
-  margin-bottom: 12px;
-  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.card-description {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 20px;
-  flex: 1;
-}
-
-.card-arrow {
-  font-size: 2rem;
-  color: var(--header-bg);
-  font-weight: bold;
-  align-self: flex-end;
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover .card-arrow {
-  transform: translateX(5px);
-}
-
-/* Mobile Responsive Cards */
+/* Mobile Responsive Category Cards */
 @media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: 1fr;
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   
-  .card-title {
-    font-size: 1.5rem;
+  .category-card {
+    padding: 30px 20px;
+  }
+  
+  .category-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .category-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr;
   }
 }
 
