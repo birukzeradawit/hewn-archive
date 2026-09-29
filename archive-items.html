@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 <style>
 .archive-items-container {
   max-width: 1200px;
@@ -364,29 +364,6 @@
     </div>
   </section>
 
-  <!-- Archive Items Section -->
-  <div class="archive-header" id="archiveSection">
-    <h1>Browse Archive Items</h1>
-  </div>
-  <div class="archive-header">
-    <h1>Archive Collection</h1>
-    <p>Browse our comprehensive collection of Ethiopian heritage materials</p>
-  </div>
-
-  <div class="archive-filters">
-    <button class="archive-filter-btn active" data-filter="all">All Items</button>
-    <button class="archive-filter-btn" data-filter="manuscript">Manuscripts</button>
-    <button class="archive-filter-btn" data-filter="document">Documents</button>
-    <button class="archive-filter-btn" data-filter="photograph">Photographs</button>
-    <button class="archive-filter-btn" data-filter="artifact">Artifacts</button>
-    <button class="archive-filter-btn" data-filter="map">Maps</button>
-  </div>
-
-  <div class="archive-grid" id="archiveGrid">
-    <div class="loading">Loading archive items...</div>
-  </div>
-</div>
-
 <footer>
   <div class="wrap">
     <div class="footer-mark">HEWN TECH</div>
@@ -441,55 +418,9 @@ function logout(e) {
   window.location.href = 'index.html';
 }
 
-// Load archive items
-async function loadArchiveItems(filter = 'all') {
-  const archiveGrid = document.getElementById('archiveGrid');
-  archiveGrid.innerHTML = '<div class="loading">Loading archive items...</div>';
-  
-  try {
-    let url = '/api/archive';
-    if (filter !== 'all') {
-      url += `?item_type=${filter}`;
-    }
-    
-    const response = await fetch(url);
-    const items = await response.json();
-    
-    if (items.length === 0) {
-      archiveGrid.innerHTML = '<div class="no-content">No archive items available in this category yet.</div>';
-      return;
-    }
-    
-    archiveGrid.innerHTML = items.map(item => `
-      <div class="archive-item-card" ${item.image_url ? 'data-has-image="true"' : 'data-has-image="false"'}>
-        ${item.image_url ? `<img src="${item.image_url}" alt="${item.title}" class="archive-item-image">` : ''}
-        <div class="archive-item-content">
-          <div class="archive-item-collection">${item.collection_name || 'General Collection'}</div>
-          <h3 class="archive-item-title">${item.title}</h3>
-          <span class="archive-item-type">${item.item_type || 'General'}</span>
-          <p class="archive-item-description">${item.description || 'No description available'}</p>
-        </div>
-      </div>
-    `).join('');
-  } catch (error) {
-    console.error('Failed to load archive items:', error);
-    archiveGrid.innerHTML = '<div class="no-content">Failed to load archive items. Please try again later.</div>';
-  }
-}
-
-// Filter button functionality
-document.querySelectorAll('.archive-filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.archive-filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    loadArchiveItems(btn.dataset.filter);
-  });
-});
-
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   updateAuthUI();
-  loadArchiveItems();
 });
 </script>
 
