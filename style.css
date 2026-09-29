@@ -1363,24 +1363,36 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 /* ==========================================================================
-   CATEGORY CARDS
+   DIGITAL COLLECTIONS
    ========================================================================== */
-.category-cards {
-  max-width: 1200px;
+.digital-collections {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 60px 20px;
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+.collections-header {
+  margin-bottom: 40px;
 }
 
-.category-card {
+.collections-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--header-bg);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.collection-card {
   background: var(--bg-secondary);
-  border-radius: 12px;
-  padding: 40px 30px;
+  border-radius: 8px;
+  padding: 30px 25px;
   text-decoration: none;
   color: var(--text-primary);
   box-shadow: var(--shadow-md);
@@ -1389,65 +1401,101 @@ nav.links a#loginLink[data-logout="true"]:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
 }
 
-.category-card:hover {
+.collection-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: var(--header-bg);
 }
 
-.category-icon {
-  width: 80px;
-  height: 80px;
+.collection-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-primary);
+}
+
+.collection-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.collection-icon {
+  width: 60px;
+  height: 60px;
   margin-bottom: 20px;
   color: var(--header-bg);
   transition: transform 0.3s ease;
 }
 
-.category-card:hover .category-icon {
+.collection-card:hover .collection-icon {
   transform: scale(1.1);
 }
 
-.category-icon svg {
+.collection-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.category-title {
+.collection-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--text-primary);
-  margin: 0;
+  margin: 0 0 15px 0;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Mobile Responsive Category Cards */
+.collection-status {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent-success);
+  font-weight: 500;
+  margin-top: auto;
+}
+
+/* Mobile Responsive Collections */
 @media (max-width: 768px) {
-  .category-grid {
+  .collections-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
-  .category-card {
-    padding: 30px 20px;
+  .collection-card {
+    padding: 25px 20px;
   }
   
-  .category-icon {
-    width: 60px;
-    height: 60px;
+  .collection-icon {
+    width: 50px;
+    height: 50px;
   }
   
-  .category-title {
-    font-size: 1.2rem;
+  .collection-title {
+    font-size: 1.5rem;
+  }
+  
+  .collections-header h2 {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .category-grid {
+  .collections-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .collections-header h2 {
+    font-size: 1.8rem;
   }
 }
 
