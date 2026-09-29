@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 <style>
 .archive-items-container {
   max-width: 1200px;
@@ -352,14 +352,6 @@
                   <span class="sub-archive-btn mono">Open Archive &amp; Biography &rarr;</span>
                 </div>
               </a>
-              <a href="#" class="sub-archive-card" onclick="document.getElementById('archiveSection').scrollIntoView({behavior: 'smooth'})">
-                <div class="sub-archive-badge mono"></div>
-                <div class="sub-archive-body">
-                  <h4>HEWN TECH ONLY &rarr;</h4>
-                  <p>Explore our comprehensive collection of Ethiopian heritage materials including manuscripts, documents, photographs, and artifacts.</p>
-                  <span class="sub-archive-btn mono">Browse Collection &rarr;</span>
-                </div>
-              </a>
             </div>
           </div>
           <span class="status">Active Collection</span>
@@ -476,10 +468,6 @@ async function loadArchiveItems(filter = 'all') {
           <h3 class="archive-item-title">${item.title}</h3>
           <span class="archive-item-type">${item.item_type || 'General'}</span>
           <p class="archive-item-description">${item.description || 'No description available'}</p>
-          <div class="archive-item-meta">
-            <span>${item.year ? `<span class="archive-item-year">${item.year}</span>` : 'Year unknown'}</span>
-            <span>${new Date(item.created_at).toLocaleDateString()}</span>
-          </div>
         </div>
       </div>
     `).join('');
