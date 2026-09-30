@@ -1390,12 +1390,12 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 .collection-card {
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  padding: 30px 25px;
+  background: transparent;
+  border-radius: 0;
+  padding: 20px;
   text-decoration: none;
   color: var(--text-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -1403,31 +1403,20 @@ nav.links a#loginLink[data-logout="true"]:hover {
   text-align: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--border-light);
+  border: none;
 }
 
 .collection-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--header-bg);
+  box-shadow: none;
 }
 
 .collection-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--accent-primary);
+  display: none;
 }
 
 .collection-id {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--accent-primary);
-  margin-bottom: 20px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  display: none;
 }
 
 .collection-icon {
