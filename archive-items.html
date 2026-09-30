@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=24">
+<link rel="stylesheet" href="style.css?v=25">
 <style>
 .archive-items-container {
   max-width: 1200px;
@@ -290,18 +290,18 @@
   font-weight: 600;
 }
 
-/* Resource Categories Styles */
-.resource-categories {
+/* Digital Collections Styles */
+.digital-collections {
   max-width: 1400px;
   margin: 60px auto;
-  padding: 0 20px;
+  padding: 60px 20px;
 }
 
-.categories-header {
+.collections-header {
   margin-bottom: 40px;
 }
 
-.categories-header h2 {
+.collections-header h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.5rem;
   color: var(--header-bg);
@@ -309,105 +309,110 @@
   letter-spacing: 0.05em;
 }
 
-.categories-grid {
+.collections-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-.resource-card {
-  position: relative;
-  height: 250px;
-  border-radius: 8px;
-  overflow: hidden;
+.collection-card {
+  background: transparent;
+  border-radius: 0;
+  padding: 20px;
   text-decoration: none;
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.resource-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.resource-card.library {
-  background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(101, 67, 33, 0.9)),
-              url('https://images.unsplash.com/photo-1568667256549-094345857637?w=800') center/cover;
-}
-
-.resource-card.archives {
-  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
-              url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800') center/cover;
-}
-
-.resource-card.records {
-  background: linear-gradient(135deg, rgba(93, 138, 102, 0.8), rgba(65, 105, 85, 0.9)),
-              url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800') center/cover;
-}
-
-.resource-card.digital {
-  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
-              url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800') center/cover;
-}
-
-.resource-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
-}
-
-.resource-card:hover .resource-overlay {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.resource-content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
+  color: var(--text-primary);
+  box-shadow: none;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border: none;
 }
 
-.resource-title {
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+}
+
+.collection-accent {
+  display: none;
+}
+
+.collection-id {
+  display: none;
+}
+
+.collection-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-card:hover .collection-icon {
+  transform: scale(1.1);
+}
+
+.collection-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.collection-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  margin: 0 0 10px 0;
-  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0 0 15px 0;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.resource-link {
+.collection-status {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 1rem;
-  margin: 0;
+  font-size: 0.9rem;
+  color: var(--accent-success);
   font-weight: 500;
-  opacity: 0.9;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {
-  .categories-grid {
-    grid-template-columns: 1fr;
+  .collections-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
-  .resource-card {
-    height: 200px;
+  .collection-card {
+    padding: 25px 20px;
   }
   
-  .resource-title {
-    font-size: 2rem;
+  .collection-icon {
+    width: 80px;
+    height: 80px;
   }
   
-  .categories-header h2 {
+  .collection-title {
+    font-size: 1.5rem;
+  }
+  
+  .collections-header h2 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .collections-header h2 {
+    font-size: 1.8rem;
   }
 }
 </style>
@@ -501,42 +506,70 @@
     </div>
   </section>
 
-<!-- Resource Categories -->
-<section class="resource-categories">
-  <div class="categories-header">
-    <h2>Explore Our Resources</h2>
+<!-- Digital Collections -->
+<section class="digital-collections">
+  <div class="collections-header">
+    <h2>Digital Collections</h2>
   </div>
-  <div class="categories-grid">
-    <a href="#" class="resource-card library">
-      <div class="resource-overlay"></div>
-      <div class="resource-content">
-        <h3 class="resource-title">LIBRARY</h3>
-        <p class="resource-link">LINK HERE</p>
+  <div class="collections-grid">
+    <a href="gigar-tesfaye-ebooks.html" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-01</div>
+      <div class="collection-icon">
+        <img src="E_Books_HD.png" alt="E-Books">
       </div>
+      <h3 class="collection-title">E-Books</h3>
+      <div class="collection-status">Available</div>
     </a>
     
-    <a href="#" class="resource-card archives">
-      <div class="resource-overlay"></div>
-      <div class="resource-content">
-        <h3 class="resource-title">ARCHIVES</h3>
-        <p class="resource-link">LINK HERE</p>
+    <a href="#" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-02</div>
+      <div class="collection-icon">
+        <img src="E_Magazines_HD.png" alt="E-Magazines">
       </div>
+      <h3 class="collection-title">E-Magazines</h3>
+      <div class="collection-status">Available</div>
     </a>
     
-    <a href="#" class="resource-card records">
-      <div class="resource-overlay"></div>
-      <div class="resource-content">
-        <h3 class="resource-title">RECORDS</h3>
-        <p class="resource-link">LINK HERE</p>
+    <a href="#" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-03</div>
+      <div class="collection-icon">
+        <img src="E_Newspaper_HD.png" alt="E-Newspapers">
       </div>
+      <h3 class="collection-title">E-Newspapers</h3>
+      <div class="collection-status">Available</div>
     </a>
     
-    <a href="knowledge.html" class="resource-card digital">
-      <div class="resource-overlay"></div>
-      <div class="resource-content">
-        <h3 class="resource-title">DIGITAL LIBRARY</h3>
-        <p class="resource-link">LINK HERE</p>
+    <a href="gigar-tesfaye-archive.html" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-04</div>
+      <div class="collection-icon">
+        <img src="E_Manuscripts_HD.png" alt="E-Manuscripts">
       </div>
+      <h3 class="collection-title">E-Manuscripts</h3>
+      <div class="collection-status">Available</div>
+    </a>
+    
+    <a href="#" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-05</div>
+      <div class="collection-icon">
+        <img src="E_Microfilms_HD.png" alt="E-Microfilms">
+      </div>
+      <h3 class="collection-title">E-Microfilms</h3>
+      <div class="collection-status">Available</div>
+    </a>
+    
+    <a href="archive-items.html" class="collection-card">
+      <div class="collection-accent"></div>
+      <div class="collection-id">HEWN-DH-06</div>
+      <div class="collection-icon">
+        <img src="E_Archives_HD.png" alt="E-Archives">
+      </div>
+      <h3 class="collection-title">E-Archives</h3>
+      <div class="collection-status">Available</div>
     </a>
   </div>
 </section>
