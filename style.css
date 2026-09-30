@@ -1535,22 +1535,22 @@ nav.links a#loginLink[data-logout="true"]:hover {
 
 .resource-card.library {
   background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(101, 67, 33, 0.9)),
-              url('https://images.unsplash.com/photo-1507842217153-e52fbc5f52d5?w=800') center/cover;
+              url('https://images.unsplash.com/photo-1568667256549-094345857637?w=800') center/cover;
 }
 
 .resource-card.archives {
   background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
-              url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800') center/cover;
+              url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800') center/cover;
 }
 
 .resource-card.records {
   background: linear-gradient(135deg, rgba(93, 138, 102, 0.8), rgba(65, 105, 85, 0.9)),
-              url('https://images.unsplash.com/photo-1568667256549-094345857637?w=800') center/cover;
+              url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800') center/cover;
 }
 
 .resource-card.digital {
   background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
-              url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800') center/cover;
+              url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800') center/cover;
 }
 
 .resource-overlay {
