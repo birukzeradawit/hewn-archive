@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=23">
+<link rel="stylesheet" href="style.css?v=24">
 <style>
 .archive-items-container {
   max-width: 1200px;
@@ -289,6 +289,127 @@
   border-radius: 4px;
   font-weight: 600;
 }
+
+/* Resource Categories Styles */
+.resource-categories {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.categories-header {
+  margin-bottom: 40px;
+}
+
+.categories-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--header-bg);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.resource-card {
+  position: relative;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.resource-card.library {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(101, 67, 33, 0.9)),
+              url('https://images.unsplash.com/photo-1568667256549-094345857637?w=800') center/cover;
+}
+
+.resource-card.archives {
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
+              url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800') center/cover;
+}
+
+.resource-card.records {
+  background: linear-gradient(135deg, rgba(93, 138, 102, 0.8), rgba(65, 105, 85, 0.9)),
+              url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800') center/cover;
+}
+
+.resource-card.digital {
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
+              url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800') center/cover;
+}
+
+.resource-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.resource-card:hover .resource-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.resource-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.resource-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.resource-link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .resource-card {
+    height: 200px;
+  }
+  
+  .resource-title {
+    font-size: 2rem;
+  }
+  
+  .categories-header h2 {
+    font-size: 2rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -352,6 +473,22 @@
                   <span class="sub-archive-btn mono">Open Archive &amp; Biography &rarr;</span>
                 </div>
               </a>
+              <a href="#" class="sub-archive-card">
+                <div class="sub-archive-badge mono"></div>
+                <div class="sub-archive-body">
+                  <h4>Virtual Exhibition &rarr;</h4>
+                  <p>Explore curated digital exhibitions showcasing Ethiopian heritage collections, artifacts, and cultural narratives in immersive online galleries.</p>
+                  <span class="sub-archive-btn mono">Open Exhibition &rarr;</span>
+                </div>
+              </a>
+              <a href="#" class="sub-archive-card">
+                <div class="sub-archive-badge mono"></div>
+                <div class="sub-archive-body">
+                  <h4>Photo Exhibition &rarr;</h4>
+                  <p>Photographic documentation of Ethiopian heritage sites, cultural events, and historical moments captured through the lens of preservation.</p>
+                  <span class="sub-archive-btn mono">Open Gallery &rarr;</span>
+                </div>
+              </a>
             </div>
           </div>
           <span class="status">Active Collection</span>
@@ -363,6 +500,46 @@
       </div>
     </div>
   </section>
+
+<!-- Resource Categories -->
+<section class="resource-categories">
+  <div class="categories-header">
+    <h2>Explore Our Resources</h2>
+  </div>
+  <div class="categories-grid">
+    <a href="#" class="resource-card library">
+      <div class="resource-overlay"></div>
+      <div class="resource-content">
+        <h3 class="resource-title">LIBRARY</h3>
+        <p class="resource-link">LINK HERE</p>
+      </div>
+    </a>
+    
+    <a href="#" class="resource-card archives">
+      <div class="resource-overlay"></div>
+      <div class="resource-content">
+        <h3 class="resource-title">ARCHIVES</h3>
+        <p class="resource-link">LINK HERE</p>
+      </div>
+    </a>
+    
+    <a href="#" class="resource-card records">
+      <div class="resource-overlay"></div>
+      <div class="resource-content">
+        <h3 class="resource-title">RECORDS</h3>
+        <p class="resource-link">LINK HERE</p>
+      </div>
+    </a>
+    
+    <a href="knowledge.html" class="resource-card digital">
+      <div class="resource-overlay"></div>
+      <div class="resource-content">
+        <h3 class="resource-title">DIGITAL LIBRARY</h3>
+        <p class="resource-link">LINK HERE</p>
+      </div>
+    </a>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
