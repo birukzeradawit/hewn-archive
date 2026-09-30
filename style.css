@@ -1492,6 +1492,130 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 /* ==========================================================================
+   RESOURCE CATEGORIES
+   ========================================================================== */
+.resource-categories {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.categories-header {
+  margin-bottom: 40px;
+}
+
+.categories-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--header-bg);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.resource-card {
+  position: relative;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.resource-card.library {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(101, 67, 33, 0.9)),
+              url('https://images.unsplash.com/photo-1507842217153-e52fbc5f52d5?w=800') center/cover;
+}
+
+.resource-card.archives {
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
+              url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800') center/cover;
+}
+
+.resource-card.records {
+  background: linear-gradient(135deg, rgba(93, 138, 102, 0.8), rgba(65, 105, 85, 0.9)),
+              url('https://images.unsplash.com/photo-1568667256549-094345857637?w=800') center/cover;
+}
+
+.resource-card.digital {
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(45, 27, 78, 0.9)),
+              url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800') center/cover;
+}
+
+.resource-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.resource-card:hover .resource-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.resource-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.resource-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.resource-link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Mobile Responsive Resource Categories */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .resource-card {
+    height: 200px;
+  }
+  
+  .resource-title {
+    font-size: 2rem;
+  }
+  
+  .categories-header h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================================================
    SEARCH RESULTS STYLING
    ========================================================================== */
 .search-results {
