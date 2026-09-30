@@ -7,7 +7,153 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="hewn-tech-logo.jpg" type="image/jpeg">
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=29">
+<style>
+/* Digital Collections Styles */
+.digital-collections {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 60px 20px;
+}
+
+.collections-header {
+  margin-bottom: 40px;
+}
+
+.collections-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--header-bg);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.collection-card {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 30px 25px;
+  text-decoration: none;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--header-bg);
+}
+
+.collection-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-primary);
+}
+
+.collection-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.collection-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-card:hover .collection-icon {
+  transform: scale(1.1);
+}
+
+.collection-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.collection-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0 0 15px 0;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.collection-status {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent-success);
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.collection-view {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .collections-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .collection-card {
+    padding: 25px 20px;
+  }
+  
+  .collection-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .collection-title {
+    font-size: 1.5rem;
+  }
+  
+  .collections-header h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .collections-header h2 {
+    font-size: 1.8rem;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -150,114 +296,72 @@
       </div>
     </div>
 
-    <!-- 5 CATEGORY OPTIONS -->
-    <div class="holdings-grid">
-      <!-- 1. E-book -->
-      <a href="gigar-tesfaye-ebooks.html" class="holding-card holding-card-clickable" title="Click to view E-book and publications catalog">
-        <div class="holding-top">
-          <span class="holding-code">HEWN-DH-01</span>
-          <span class="holding-stamp">DIGITAL COLLECTION</span>
-        </div>
-        <div class="holding-icon-symbol">
-          <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            <line x1="9" y1="7" x2="16" y2="7"></line>
-            <line x1="9" y1="11" x2="14" y2="11"></line>
-          </svg>
-        </div>
-        <h3>1. E-booking</h3>
-        <div class="holding-meta mono">
-          <span style="color:var(--cinnabar); font-weight:600;">OPEN CATALOG REGISTER &rarr;</span>
-          <span class="holding-tag">VIEW (01&ndash;08)</span>
-        </div>
-      </a>
-
-      <!-- 2. E-Manuscript -->
-      <div class="holding-card">
-        <div class="holding-top">
-          <span class="holding-code">HEWN-DH-02</span>
-          <span class="holding-stamp">DIGITAL COLLECTION</span>
-        </div>
-        <div class="holding-icon-symbol">
-          <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 2h8a2 2 0 0 1 2 2v14a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h2"></path>
-            <path d="M18 18h-8a2 2 0 0 1-2-2V2"></path>
-            <line x1="9" y1="7" x2="14" y2="7"></line>
-            <line x1="9" y1="11" x2="13" y2="11"></line>
-          </svg>
-        </div>
-        <h3>2. E-manuscript</h3>
-        <div class="holding-meta mono">
-          <span>STATUS: PENDING DATA</span>
-          <span class="holding-tag">CATALOG IN PROGRESS</span>
-        </div>
+    <!-- Digital Collections -->
+    <div class="digital-collections">
+      <div class="collections-header">
+        <h2>Digital Collections</h2>
       </div>
-
-      <!-- 3. E-Microfilm -->
-      <div class="holding-card">
-        <div class="holding-top">
-          <span class="holding-code">HEWN-DH-03</span>
-          <span class="holding-stamp">DIGITAL COLLECTION</span>
-        </div>
-        <div class="holding-icon-symbol">
-          <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-            <line x1="7" y1="2" x2="7" y2="22"></line>
-            <line x1="17" y1="2" x2="17" y2="22"></line>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <line x1="2" y1="7" x2="7" y2="7"></line>
-            <line x1="2" y1="17" x2="7" y2="17"></line>
-            <line x1="17" y1="7" x2="22" y2="7"></line>
-            <line x1="17" y1="17" x2="22" y2="17"></line>
-          </svg>
-        </div>
-        <h3>3. E-microfilm</h3>
-        <div class="holding-meta mono">
-          <span>STATUS: PENDING DATA</span>
-          <span class="holding-tag">CATALOG IN PROGRESS</span>
-        </div>
-      </div>
-
-      <!-- 4. E-Newspaper -->
-      <div class="holding-card">
-        <div class="holding-top">
-          <span class="holding-code">HEWN-DH-04</span>
-          <span class="holding-stamp">DIGITAL COLLECTION</span>
-        </div>
-        <div class="holding-icon-symbol">
-          <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
-            <path d="M18 14h-8"></path>
-            <path d="M15 18h-5"></path>
-            <path d="M10 6h8v4h-8V6Z"></path>
-          </svg>
-        </div>
-        <h3>4. E-newspaper</h3>
-        <div class="holding-meta mono">
-          <span>STATUS: PENDING DATA</span>
-          <span class="holding-tag">CATALOG IN PROGRESS</span>
-        </div>
-      </div>
-
-      <!-- 5. E-Archive -->
-      <div class="holding-card holding-card-primary">
-        <div class="holding-top">
-          <span class="holding-code">HEWN-DH-05</span>
-          <span class="holding-stamp">DIGITAL COLLECTION</span>
-        </div>
-        <div class="holding-icon-symbol">
-          <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="21 8 21 21 3 21 3 8"></polyline>
-            <rect x="1" y="3" width="22" height="5"></rect>
-            <line x1="10" y1="12" x2="14" y2="12"></line>
-          </svg>
-        </div>
-        <h3>5. E-archive</h3>
-        <div class="holding-meta mono">
-          <span>STATUS: PENDING DATA</span>
-          <span class="holding-tag">CATALOG IN PROGRESS</span>
-        </div>
+      <div class="collections-grid">
+        <a href="gigar-tesfaye-ebooks.html" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-01</div>
+          <div class="collection-icon">
+            <img src="E_Books_HD.png" alt="E-Books">
+          </div>
+          <h3 class="collection-title">1. E-booking</h3>
+          <div class="collection-status">OPEN CATALOG REGISTER</div>
+          <div class="collection-view">VIEW (01-08)</div>
+        </a>
+        
+        <a href="#" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-02</div>
+          <div class="collection-icon">
+            <img src="E_Magazines_HD.png" alt="E-Magazines">
+          </div>
+          <h3 class="collection-title">2. E-magazine</h3>
+          <div class="collection-status">STATUS: PENDING DATA</div>
+        </a>
+        
+        <a href="#" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-03</div>
+          <div class="collection-icon">
+            <img src="E_Newspaper_HD.png" alt="E-Newspapers">
+          </div>
+          <h3 class="collection-title">3. E-newspaper</h3>
+          <div class="collection-status">STATUS: PENDING DATA</div>
+        </a>
+        
+        <a href="#" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-04</div>
+          <div class="collection-icon">
+            <img src="E_Manuscripts_HD.png" alt="E-Manuscripts">
+          </div>
+          <h3 class="collection-title">4. E-manuscript</h3>
+          <div class="collection-status">CATALOG IN PROGRESS</div>
+        </a>
+        
+        <a href="#" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-05</div>
+          <div class="collection-icon">
+            <img src="E_Microfilms_HD.png" alt="E-Microfilms">
+          </div>
+          <h3 class="collection-title">5. E-microfilm</h3>
+          <div class="collection-status">STATUS: PENDING DATA</div>
+        </a>
+        
+        <a href="#" class="collection-card">
+          <div class="collection-accent"></div>
+          <div class="collection-id">HEWN-DH-06</div>
+          <div class="collection-icon">
+            <img src="E_Archives_HD.png" alt="E-Archives">
+          </div>
+          <h3 class="collection-title">6. E-archive</h3>
+          <div class="collection-status">CATALOG IN PROGRESS</div>
+        </a>
       </div>
     </div>
   </div>

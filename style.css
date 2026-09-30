@@ -1363,11 +1363,11 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 /* ==========================================================================
-   DIGITAL COLLECTIONS (Projects Page Only)
+   DIGITAL COLLECTIONS (Gigar Tesfaye Archive Page)
    ========================================================================== */
 .digital-collections {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 60px auto;
   padding: 60px 20px;
 }
 
@@ -1475,7 +1475,6 @@ nav.links a#loginLink[data-logout="true"]:hover {
   font-weight: 600;
 }
 
-/* Mobile Responsive Collections */
 @media (max-width: 768px) {
   .collections-grid {
     grid-template-columns: repeat(2, 1fr);
