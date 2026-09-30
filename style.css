@@ -1363,6 +1363,166 @@ nav.links a#loginLink[data-logout="true"]:hover {
 }
 
 /* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+.about-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 60px 40px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-container {
+  text-align: center;
+}
+
+.about-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--header-bg);
+  margin: 0 0 40px 0;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0 0 30px 0;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 0 40px 0;
+}
+
+.about-tag {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.about-quote {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--accent-primary);
+  margin: 40px 0;
+  padding: 30px;
+  background: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.6;
+}
+
+.about-quote cite {
+  display: block;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--text-secondary);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.about-platform {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-light);
+}
+
+.platform-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--header-bg);
+  margin: 0 0 20px 0;
+  letter-spacing: 0.05em;
+}
+
+.platform-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0 0 25px 0;
+}
+
+.platform-tags {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.platform-tag {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Mobile Responsive About Section */
+@media (max-width: 768px) {
+  .about-section {
+    margin: 40px auto;
+    padding: 40px 20px;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+  }
+
+  .about-tags {
+    gap: 10px;
+  }
+
+  .about-tag {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .about-quote {
+    font-size: 1.2rem;
+    padding: 20px;
+  }
+
+  .platform-title {
+    font-size: 1.5rem;
+  }
+
+  .platform-text {
+    font-size: 1rem;
+  }
+
+  .platform-tags {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ==========================================================================
    DIGITAL COLLECTIONS (Gigar Tesfaye Archive Page)
    ========================================================================== */
 .digital-collections {
