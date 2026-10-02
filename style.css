@@ -3753,6 +3753,20 @@ footer .footer-colophon {
   border-bottom: 1px solid var(--border-light);
 }
 
+.historical-slideshow .hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.7) 0%, rgba(45, 27, 78, 0.6) 50%, rgba(26, 10, 46, 0.7) 100%);
+}
+
 .slideshow-container {
   position: relative;
   width: 100%;
