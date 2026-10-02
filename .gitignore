@@ -32,3 +32,6 @@ logs/
 
 # Code workspace
 archive.code-workspace
+
+# Vercel
+.vercel/
