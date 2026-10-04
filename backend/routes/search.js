@@ -25,8 +25,13 @@ router.get('/', async (req, res) => {
 
     if (category) {
       paramCount++;
-      query += ` AND c.category_id = $${paramCount}`;
-      params.push(category);
+      if (!isNaN(category)) {
+        query += ` AND c.category_id = $${paramCount}`;
+        params.push(parseInt(category, 10));
+      } else {
+        query += ` AND (cat.name ILIKE $${paramCount} OR c.content_type ILIKE $${paramCount})`;
+        params.push(`%${category}%`);
+      }
     }
 
     if (content_type) {

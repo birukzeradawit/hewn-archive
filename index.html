@@ -19,7 +19,6 @@
         <img src="hewn-tech-logo.jpg" alt="HEWN Tech" class="brand-logo">
         <div class="brand-text">
           <span class="brand-name">HEWN Tech</span>
-          <span class="brand-tagline">Archive</span>
         </div>
       </a>
     </div>
@@ -83,13 +82,14 @@
           <input type="text" id="searchInput" placeholder="Enter a keyword or phrase to search the HEWN Tech archive..." class="search-input">
           <button type="submit" class="search-btn">Search</button>
           <div class="search-advanced">
-            <select id="searchAdvanced" class="advanced-select">
-              <option value="">Advanced</option>
-              <option value="manuscripts">Manuscripts</option>
-              <option value="churches">Churches</option>
-              <option value="obelisks">Obelisks</option>
-              <option value="artifacts">Artifacts</option>
-              <option value="photographs">Photographs</option>
+            <select id="searchAdvanced" class="advanced-select" aria-label="Filter search by category">
+              <option value="">All Categories</option>
+              <option value="projects">Projects</option>
+              <option value="gigar-archive">Gigar Tesfaye Archive</option>
+              <option value="ebooks">E-Books &amp; Publications</option>
+              <option value="knowledge">Knowledge Center</option>
+              <option value="network">Partners &amp; Network</option>
+              <option value="exhibitions">Virtual Exhibitions</option>
             </select>
           </div>
         </form>
@@ -263,294 +263,378 @@ function logout(e) {
   window.location.href = 'index.html';
 }
 
-// Search functionality
-document.getElementById('searchForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const searchQuery = document.getElementById('searchInput').value;
-  const advanced = document.getElementById('searchAdvanced').value;
+// Search functionality & Site Catalog
+const SITE_INDEX = [
+  // Gigar Tesfaye Archive & Publications
+  {
+    title: "Gigar Tesfaye Archive",
+    description: "Preserving the scholarly and documentary legacy of Gigar Tesfaye — historical photographs, publications, field notes, and archaeological surveys in Tigray, Wollo, Lalibela, Aksum, and Gundagundi.",
+    category: "gigar-archive",
+    categoryLabel: "Gigar Tesfaye Archive",
+    url: "gigar-tesfaye-archive.html",
+    tags: ["gigar", "tesfaye", "archive", "archaeology", "tigray", "wollo", "lalibela", "aksum", "gundagundi", "heritage", "biography"]
+  },
+  {
+    title: "E-Books & Publications Catalog",
+    description: "Digital register and open catalog of Gigar Tesfaye's scholarly publications, journal articles, and archaeological studies with links to Persée portal.",
+    category: "ebooks",
+    categoryLabel: "E-Books & Publications",
+    url: "gigar-tesfaye-ebooks.html",
+    tags: ["ebooks", "books", "publications", "annales d'ethiopie", "persee", "articles", "gigar tesfaye", "papers"]
+  },
+  {
+    title: "Nouveaux documents sur la faune et l'art rupestre du Choa (1985)",
+    description: "Scholarly publication by Gigar Tesfaye on rock art and prehistoric fauna in Choa (Shoa), published in Annales d'Éthiopie Vol. 13.",
+    category: "ebooks",
+    categoryLabel: "E-Books & Publications",
+    url: "gigar-tesfaye-ebooks.html#item-01",
+    tags: ["rock art", "choa", "shoa", "fauna", "rupestre", "gigar tesfaye", "annales d'ethiopie", "1985"]
+  },
+  {
+    title: "Rock Art around the Zalanbesa Area in Eastern Tigrai (2000)",
+    description: "Research paper by Gigar Tesfay documenting rock paintings, engravings, and archaeological field surveys in Zalanbesa, Tigray.",
+    category: "ebooks",
+    categoryLabel: "E-Books & Publications",
+    url: "gigar-tesfaye-ebooks.html#item-02",
+    tags: ["rock art", "zalanbesa", "tigrai", "tigray", "gigar tesfay", "annales d'ethiopie", "paintings", "archaeology"]
+  },
+  {
+    title: "12th Century King Lalibela Ge'ez Inscriptions (1987)",
+    description: "Gigar Tesfaye's landmark study on the Ge'ez inscriptions carved on the altar tabots crafted during the reign of King Lalibela in the 12th century.",
+    category: "ebooks",
+    categoryLabel: "E-Books & Publications",
+    url: "gigar-tesfaye-ebooks.html#item-03",
+    tags: ["lalibela", "ge'ez", "inscriptions", "tabot", "king lalibela", "12th century", "churches", "manuscripts", "gigar tesfaye"]
+  },
+  {
+    title: "Ancient Sabaean & Ge'ez Inscriptions Documentation",
+    description: "Epigraphic studies and field documentation of ancient South Arabian / Sabaean and early Ge'ez inscriptions across northern Ethiopia.",
+    category: "ebooks",
+    categoryLabel: "E-Books & Publications",
+    url: "gigar-tesfaye-ebooks.html",
+    tags: ["sabaean", "ge'ez", "inscriptions", "epigraphy", "aksum", "yeha", "ancient languages"]
+  },
+  {
+    title: "Archaeological Surveys & Field Notes",
+    description: "Field surveys and documentation of archaeological sites, ancient settlements, and rock art in Tigray, Wollo, and Aksum.",
+    category: "gigar-archive",
+    categoryLabel: "Gigar Tesfaye Archive",
+    url: "gigar-tesfaye-archive.html",
+    tags: ["archaeology", "field notes", "surveys", "tigray", "wollo", "aksum", "monuments"]
+  },
+
+  // Projects
+  {
+    title: "ARC 001 — Central Archive Repository",
+    description: "Central repository collections dedicated to identifying, cataloging, and preserving Ethiopia's cultural, archaeological, and documentary heritage.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["projects", "archive", "arc 001", "central archive", "preservation", "catalog"]
+  },
+  {
+    title: "ARC 002 — Virtual Exhibition",
+    description: "Curated digital exhibitions showcasing Ethiopian heritage collections, historical monuments, and cultural narratives in online galleries.",
+    category: "exhibitions",
+    categoryLabel: "Virtual Exhibitions",
+    url: "archive-items.html",
+    tags: ["virtual exhibition", "exhibitions", "gallery", "culture", "artifacts", "monuments"]
+  },
+  {
+    title: "ARC 003 — Photo Exhibition",
+    description: "Photographic documentation of Ethiopian heritage sites, rock-hewn architecture, cultural events, and historical moments.",
+    category: "exhibitions",
+    categoryLabel: "Virtual Exhibitions",
+    url: "archive-items.html",
+    tags: ["photo exhibition", "photography", "photographs", "heritage sites", "documentation", "images"]
+  },
+
+  // Knowledge Center
+  {
+    title: "Archival Preservation & Records Protocol",
+    description: "Documenting, storing, and making accessible historical documents, photographs, field notes, maps, and records for researchers and future generations.",
+    category: "knowledge",
+    categoryLabel: "Knowledge Center",
+    url: "knowledge.html",
+    tags: ["archive", "preservation", "records", "documentation", "field notes", "maps"]
+  },
+  {
+    title: "Archaeological & Historical Research",
+    description: "Scholarly publications, archaeological findings, and architectural studies exploring Ethiopia's ancient civilizations.",
+    category: "knowledge",
+    categoryLabel: "Knowledge Center",
+    url: "knowledge.html",
+    tags: ["research", "archaeology", "history", "architecture", "studies", "publications"]
+  },
+  {
+    title: "Digital Heritage & GIS Mapping",
+    description: "Geographic Information Systems (GIS), mapping, 3D documentation, and remote sensing tools for protecting and monitoring heritage sites.",
+    category: "knowledge",
+    categoryLabel: "Knowledge Center",
+    url: "knowledge.html",
+    tags: ["digital heritage", "gis", "mapping", "remote sensing", "technology", "conservation"]
+  },
+  {
+    title: "Heritage Training & Capacity Building",
+    description: "Practical workshops, training programs, and educational resources for students, researchers, and heritage professionals.",
+    category: "knowledge",
+    categoryLabel: "Knowledge Center",
+    url: "knowledge.html",
+    tags: ["training", "workshops", "education", "capacity building", "learning", "students"]
+  },
+
+  // Partners & Network
+  {
+    title: "Authority for Research & Conservation of Cultural Heritage (ARCCH / EHA)",
+    description: "The primary federal agency mandated for the identification, protection, conservation, and research of Ethiopia's cultural heritage.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["arcch", "eha", "heritage authority", "government", "conservation", "ethiopia"]
+  },
+  {
+    title: "Institute of Ethiopian Studies (IES) — Addis Ababa University",
+    description: "Premier academic institution and research museum dedicated to Ethiopian studies, archival records, manuscripts, and ethnography.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["ies", "institute of ethiopian studies", "aau", "addis ababa university", "manuscripts", "research"]
+  },
+  {
+    title: "UNESCO World Heritage Centre",
+    description: "International agency supporting the protection and international recognition of Ethiopia's World Heritage sites.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["unesco", "world heritage", "international", "monuments", "conservation"]
+  },
+  {
+    title: "French Center for Ethiopian Studies (CFEE)",
+    description: "Joint research unit and academic partner promoting archaeological surveys, excavations, and historical research in the Horn of Africa.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["cfee", "french center", "archaeology", "excavations", "research", "horn of africa"]
+  },
+  {
+    title: "Persée Digital Scientific Library",
+    description: "Open-access scientific portal providing digitized archives of French academic journals including Annales d'Éthiopie.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["persee", "journal", "library", "annales d'ethiopie", "open access", "articles"]
+  },
+  {
+    title: "World Monuments Fund (WMF)",
+    description: "International non-profit organization dedicated to safeguarding endangered cultural heritage sites across the globe.",
+    category: "network",
+    categoryLabel: "Partners & Network",
+    url: "network.html",
+    tags: ["wmf", "world monuments fund", "monuments", "conservation", "preservation"]
+  },
+
+  // Heritage Monuments (Featured in Slideshow & Collections)
+  {
+    title: "Rock-Hewn Churches of Lalibela",
+    description: "11 monolithic rock-cut cave churches carved in the 12th-13th century in the Lasta mountains, a UNESCO World Heritage treasure.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["lalibela", "rock-hewn", "churches", "monolithic", "lasta", "roha", "unesco", "heritage"]
+  },
+  {
+    title: "Stelae Field of Aksum",
+    description: "Towering ancient granite obelisks, royal tombs, and multilingual inscriptions of the Aksumite Empire dating back over two millennia.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["aksum", "axum", "stelae", "obelisks", "stela", "ancient", "kingdom", "unesco"]
+  },
+  {
+    title: "Fasil Ghebbi, Gondar",
+    description: "17th-century fortress-city and royal compound known as the 'Camelot of Africa', home to Ethiopian emperors.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["gondar", "fasil ghebbi", "castles", "fortress", "fasilides", "architecture"]
+  },
+  {
+    title: "Harar Jugol (Fortified Historic Town)",
+    description: "Historic fortified sacred city with 82 mosques, 102 shrines, and distinctive Harari townhouses.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["harar", "harar jugol", "jugol", "walled city", "islamic heritage", "mosques"]
+  },
+  {
+    title: "Tiya Megalithic Site",
+    description: "Ancient archaeological site in central Ethiopia featuring engraved stelae marking prehistoric burial grounds.",
+    category: "projects",
+    categoryLabel: "Projects",
+    url: "archive-items.html",
+    tags: ["tiya", "megalithic", "stelae", "engraved stones", "soddo", "archaeology"]
+  },
+  {
+    title: "About HEWN Tech & Our Philosophy",
+    description: "Discover HEWN Tech's mission to bridge traditional Ethiopian knowledge systems and modern digital preservation technology.",
+    category: "knowledge",
+    categoryLabel: "About HEWN Tech",
+    url: "about.html",
+    tags: ["about", "mission", "story", "gigar tesfaye", "philosophy", "preservation"]
+  }
+];
+
+async function performSearch() {
+  const searchInput = document.getElementById('searchInput');
+  const searchAdvanced = document.getElementById('searchAdvanced');
   const searchResults = document.getElementById('searchResults');
   
-  if (!searchQuery.trim()) {
+  const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+  const category = searchAdvanced ? searchAdvanced.value : '';
+
+  if (!query && !category) {
     searchResults.style.display = 'none';
     return;
   }
+
+  // Filter local site index
+  let results = SITE_INDEX.filter(item => {
+    if (category && item.category !== category) {
+      return false;
+    }
+    if (!query) {
+      return true;
+    }
+    const inTitle = item.title.toLowerCase().includes(query);
+    const inDesc = item.description.toLowerCase().includes(query);
+    const inTags = item.tags.some(tag => tag.toLowerCase().includes(query));
+    const inCat = item.categoryLabel.toLowerCase().includes(query);
+    return inTitle || inDesc || inTags || inCat;
+  });
+
+  // Attempt backend API search as well and merge if available
+  if (query) {
+    try {
+      const params = new URLSearchParams({ q: query });
+      if (category) params.append('category', category);
+      const res = await fetch(`/api/search?${params}`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) {
+        const apiData = await res.json();
+        if (apiData && Array.isArray(apiData.results)) {
+          apiData.results.forEach(dbItem => {
+            if (!results.some(r => r.title.toLowerCase() === dbItem.title.toLowerCase())) {
+              results.push({
+                title: dbItem.title,
+                description: dbItem.description || 'Database archive record',
+                category: category || 'projects',
+                categoryLabel: dbItem.category_name || 'Archive Database',
+                url: 'archive-items.html',
+                tags: []
+              });
+            }
+          });
+        }
+      }
+    } catch (err) {
+      // Backend optional / offline; local results used
+    }
+  }
+
+  renderSearchResults(results, query, category);
+}
+
+function renderSearchResults(results, query, category) {
+  const searchResults = document.getElementById('searchResults');
   
-  try {
-    const params = new URLSearchParams();
-    params.append('q', searchQuery);
-    if (advanced) params.append('category', advanced);
-    
-    const response = await fetch(`/api/search?${params}`);
-    const data = await response.json();
-    
-    if (data.results && data.results.length > 0) {
-      searchResults.innerHTML = `
+  if (results && results.length > 0) {
+    searchResults.innerHTML = `
+      <div class="search-results-modal-box" style="max-width:800px; margin: 0 auto; background: var(--bg-primary); border-radius: 8px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 1px solid var(--border-light);">
         <div class="search-results-header">
-          <span class="search-results-count">${data.results.length} results found</span>
-          <button class="search-results-close" onclick="closeSearchResults()">✕</button>
+          <span class="search-results-count">${results.length} ${results.length === 1 ? 'result' : 'results'} found</span>
+          <button type="button" class="search-results-close" onclick="closeSearchResults()" aria-label="Close search">✕</button>
         </div>
-        ${data.results.map(item => `
-          <div class="search-result-item" onclick="location.href='archive-items.html'">
-            <div class="search-result-title">${item.title}</div>
-            <div class="search-result-desc">${item.description || 'No description'}</div>
-            <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
-          </div>
-        `).join('')}
-      `;
-      searchResults.style.display = 'block';
-    } else {
-      searchResults.innerHTML = `
+        <div style="padding: 16px; max-height: 70vh; overflow-y: auto;">
+          ${results.map(item => `
+            <div class="search-result-item" onclick="location.href='${item.url}'" style="margin-bottom: 12px; cursor: pointer;">
+              <div class="search-result-title" style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+                <span>${item.title}</span>
+                <span class="search-result-meta" style="font-size: 0.75rem; background: rgba(142, 68, 173, 0.15); color: var(--header-accent, #9b59b6); padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace;">${item.categoryLabel}</span>
+              </div>
+              <div class="search-result-desc">${item.description}</div>
+              <div style="margin-top: 6px; font-size: 0.82rem; color: var(--header-accent, #9b59b6); font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;">
+                Open resource &rarr;
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    searchResults.style.display = 'block';
+  } else {
+    searchResults.innerHTML = `
+      <div class="search-results-modal-box" style="max-width:800px; margin: 0 auto; background: var(--bg-primary); border-radius: 8px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.4); border: 1px solid var(--border-light);">
         <div class="search-results-header">
           <span class="search-results-count">No results found</span>
-          <button class="search-results-close" onclick="closeSearchResults()">✕</button>
+          <button type="button" class="search-results-close" onclick="closeSearchResults()" aria-label="Close search">✕</button>
         </div>
-        <div class="search-result-item">
-          <div class="search-result-title">No results found</div>
-          <div class="search-result-desc">Try different search terms or filters</div>
+        <div style="padding: 30px; text-align: center;">
+          <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; margin-bottom: 8px; color: var(--header-bg);">No matching items</h3>
+          <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px;">
+            We couldn't find items matching your search. Try searching for <strong>Lalibela</strong>, <strong>Gigar</strong>, <strong>E-Books</strong>, <strong>Rock Art</strong>, <strong>Aksum</strong>, or <strong>UNESCO</strong>.
+          </p>
+          <button type="button" onclick="document.getElementById('searchInput').value=''; document.getElementById('searchAdvanced').value=''; performSearch();" style="background: var(--header-bg); color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer;">
+            Explore All Collections
+          </button>
         </div>
-      `;
-      searchResults.style.display = 'block';
-    }
-  } catch (error) {
-    console.error('Search error:', error);
-    searchResults.innerHTML = `
-      <div class="search-results-header">
-        <span class="search-results-count">Search error</span>
-        <button class="search-results-close" onclick="closeSearchResults()">✕</button>
-      </div>
-      <div class="search-result-item">
-        <div class="search-result-title">Search error</div>
-        <div class="search-result-desc">Please try again later</div>
       </div>
     `;
     searchResults.style.display = 'block';
   }
-});
+}
 
 // Close search results function
 function closeSearchResults() {
   const searchResults = document.getElementById('searchResults');
-  searchResults.style.display = 'none';
+  if (searchResults) {
+    searchResults.style.display = 'none';
+  }
 }
 
-// Close search results when clicking outside
+// Close search results when clicking outside or pressing Escape
 document.addEventListener('click', (e) => {
   const searchResults = document.getElementById('searchResults');
   const searchForm = document.getElementById('searchForm');
-  if (searchResults.style.display === 'block' && 
-      !searchResults.contains(e.target) && 
-      !searchForm.contains(e.target)) {
+  if (searchResults && searchResults.style.display === 'block' && 
+      !searchResults.querySelector('.search-results-modal-box')?.contains(e.target) && 
+      !searchForm?.contains(e.target)) {
     searchResults.style.display = 'none';
   }
 });
 
-// Update auth UI on page load
-document.addEventListener('DOMContentLoaded', updateAuthUI);
-</script>
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeSearchResults();
+  }
+});
 
-</body>
-</html>
-
-<script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const totalSlides = slides.length;
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.remove('active');
-    dots[i].classList.remove('active');
+// Attach form and dropdown listeners
+const searchForm = document.getElementById('searchForm');
+if (searchForm) {
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    performSearch();
   });
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
 }
 
-function changeSlide(direction) {
-  currentSlide += direction;
-  if (currentSlide >= totalSlides) currentSlide = 0;
-  if (currentSlide < 0) currentSlide = totalSlides - 1;
-  showSlide(currentSlide);
-}
-
-function goToSlide(index) {
-  currentSlide = index;
-  showSlide(currentSlide);
-}
-
-// Auto-advance slideshow
-setInterval(() => {
-  changeSlide(1);
-}, 6000);
-
-// Authentication state management
-function updateAuthUI() {
-  const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user') || 'null');
-  const loginLink = document.getElementById('loginLink');
-  const signupLink = document.getElementById('signupLink');
-  
-  if (token && user) {
-    if (loginLink) {
-      loginLink.textContent = 'Logout';
-      loginLink.href = '#';
-      loginLink.setAttribute('data-logout', 'true');
-      loginLink.onclick = (e) => {
-        e.preventDefault();
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.reload();
-      };
-    }
-    if (signupLink) {
-      signupLink.style.display = 'none';
-    }
-  } else {
-    if (loginLink) {
-      loginLink.textContent = 'Login';
-      loginLink.href = 'login.html';
-      loginLink.removeAttribute('data-logout');
-      loginLink.onclick = null;
-    }
-    if (signupLink) {
-      signupLink.style.display = 'inline';
-    }
-  }
+const searchAdvanced = document.getElementById('searchAdvanced');
+if (searchAdvanced) {
+  searchAdvanced.addEventListener('change', () => {
+    performSearch();
+  });
 }
 
 // Update auth UI on page load
 document.addEventListener('DOMContentLoaded', updateAuthUI);
-
-// Auth UI update function
-function updateAuthUI() {
-  const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const loginLink = document.getElementById('loginLink');
-  const signupLink = document.getElementById('signupLink');
-  const dashboardLink = document.getElementById('dashboardLink');
-  const adminLink = document.getElementById('adminLink');
-
-  if (token && user.id) {
-    // User is logged in
-    loginLink.textContent = 'Logout';
-    loginLink.setAttribute('data-logout', 'true');
-    loginLink.addEventListener('click', logout);
-    signupLink.style.display = 'none';
-    
-    // Show dashboard link
-    if (dashboardLink) {
-      dashboardLink.style.display = 'inline-block';
-    }
-    
-    // Show admin link for admin users
-    if (adminLink && user.role === 'admin') {
-      adminLink.style.display = 'inline-block';
-    }
-  } else {
-    // User is logged out
-    loginLink.textContent = 'Login';
-    loginLink.removeAttribute('data-logout');
-    loginLink.removeEventListener('click', logout);
-    signupLink.style.display = 'inline-block';
-    
-    // Hide dashboard and admin links
-    if (dashboardLink) {
-      dashboardLink.style.display = 'none';
-    }
-    if (adminLink) {
-      adminLink.style.display = 'none';
-    }
-  }
-}
-
-// Logout function
-function logout(e) {
-  e.preventDefault();
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  updateAuthUI();
-  window.location.href = 'index.html';
-}
-
-// Search functionality
-document.getElementById('searchForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const searchQuery = document.getElementById('searchInput').value;
-  const category = document.getElementById('searchCategory').value;
-  const searchType = document.getElementById('searchType').value;
-  const searchResults = document.getElementById('searchResults');
-  
-  if (!searchQuery.trim()) {
-    searchResults.style.display = 'none';
-    return;
-  }
-  
-  try {
-    const params = new URLSearchParams();
-    params.append('q', searchQuery);
-    if (category) params.append('category', category);
-    if (searchType) params.append('content_type', searchType);
-    
-    const response = await fetch(`/api/search?${params}`);
-    const data = await response.json();
-    
-    if (data.results && data.results.length > 0) {
-      searchResults.innerHTML = data.results.map(item => `
-        <div class="search-result-item" onclick="location.href='projects.html'">
-          <div class="search-result-title">${item.title}</div>
-          <div class="search-result-desc">${item.description || 'No description'}</div>
-          <div class="search-result-meta">${item.category_name || 'Uncategorized'} • ${new Date(item.created_at).toLocaleDateString()}</div>
-        </div>
-      `).join('');
-      searchResults.style.display = 'block';
-    } else {
-      searchResults.innerHTML = `
-        <div class="search-result-item">
-          <div class="search-result-title">No results found</div>
-          <div class="search-result-desc">Try different search terms or filters</div>
-        </div>
-      `;
-      searchResults.style.display = 'block';
-    }
-  } catch (error) {
-    console.error('Search error:', error);
-    searchResults.innerHTML = `
-      <div class="search-result-item">
-        <div class="search-result-title">Search error</div>
-        <div class="search-result-desc">Please try again later</div>
-      </div>
-    `;
-    searchResults.style.display = 'block';
-  }
-});
-
-// Load search filters
-async function loadSearchFilters() {
-  try {
-    const response = await fetch('/api/search/filters');
-    const data = await response.json();
-    
-    const categorySelect = document.getElementById('searchCategory');
-    const typeSelect = document.getElementById('searchType');
-    
-    if (data.categories) {
-      categorySelect.innerHTML = '<option value="">All Categories</option>' + 
-        data.categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
-    }
-    
-    if (data.contentTypes) {
-      typeSelect.innerHTML = '<option value="">All Types</option>' + 
-        data.contentTypes.map(type => `<option value="${type.content_type}">${type.content_type}</option>`).join('');
-    }
-  } catch (error) {
-    console.error('Failed to load search filters:', error);
-  }
-}
-
-// Load filters on page load
-document.addEventListener('DOMContentLoaded', loadSearchFilters);
 </script>
 
 </body>
