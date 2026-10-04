@@ -2298,13 +2298,13 @@ section.block:last-of-type {
 }
 
 .project-row {
-  display: grid;
-  grid-template-columns: 140px 1fr 180px;
-  gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
   padding: 32px 28px;
   background: var(--paper-card);
   border: 1px solid var(--line);
-  align-items: start;
+  align-items: flex-start;
   box-shadow: var(--shadow-card);
   position: relative;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;

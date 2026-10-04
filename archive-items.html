@@ -135,12 +135,17 @@
 
 .project-row {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 24px;
   padding: 30px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   align-items: flex-start;
+}
+
+.project-row-body {
+  flex: 1;
 }
 
 .project-row .acc {
@@ -488,8 +493,7 @@
     <div class="wrap">
       <div class="projects-list">
         <div class="project-row">
-          <span class="acc">ARC&nbsp;001</span>
-          <div>
+          <div class="project-row-body">
             <h3>Archive</h3>
             <p>Central repository collections dedicated to identifying, documenting, cataloging, and preserving Ethiopia's cultural, archaeological, and documentary heritage.</p>
             <div class="sub-archives">
@@ -507,8 +511,7 @@
         </div>
         
         <div class="project-row">
-          <span class="acc">ARC&nbsp;002</span>
-          <div>
+          <div class="project-row-body">
             <h3>Virtual Exhibition</h3>
             <p>Explore curated digital exhibitions showcasing Ethiopian heritage collections, artifacts, and cultural narratives in immersive online galleries.</p>
           </div>
@@ -516,8 +519,7 @@
         </div>
         
         <div class="project-row">
-          <span class="acc">ARC&nbsp;003</span>
-          <div>
+          <div class="project-row-body">
             <h3>Photo Exhibition</h3>
             <p>Photographic documentation of Ethiopian heritage sites, cultural events, and historical moments captured through the lens of preservation.</p>
           </div>
